@@ -21,7 +21,7 @@
 # THE SOFTWARE.
 
 [tool.poetry]
-name = "krux"
+name = "vaultseed"
 version = "25.10.1"
 description = "Open-source signing device firmware for Bitcoin"
 authors = ["Jeff S <jeffreesun@protonmail.com>"]
@@ -140,9 +140,9 @@ simulator-wonderk.ref = "simulator-wonder-k"
 simulator-k.ref = "simulator-wonder-k"
 
 # git tasks
-git-update = "git submodule update --init --recursive"
-git-pull = "git pull git@github.com:selfcustody/krux.git"
-git-pull-https = "git pull https://github.com/selfcustody/krux.git"
+git-update = "git pull --ff-only origin main"
+git-pull = "git pull git@github.com:VoidHashh/VaultSeed.git"
+git-pull-https = "git pull https://github.com/VoidHashh/VaultSeed.git"
 
 # ktool tasks 
 ktool-cmd = "python firmware/Kboot/build/ktool.py -b 2000000"

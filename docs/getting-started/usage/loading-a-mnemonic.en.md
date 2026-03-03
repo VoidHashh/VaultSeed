@@ -1,4 +1,4 @@
-Once you have either a 12 or 24-word [BIP39 mnemonic](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki), choose `Load Mnemonic` on Krux's start menu (aka login menu), and choose an input method:
+Once you have either a 12 or 24-word [BIP39 mnemonic](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki), choose `Load Mnemonic` on VaultSeed's start menu (aka login menu), and choose an input method:
 
 <img src="../../../img/maixpy_amigo/load-mnemonic-options-300.png" class="amigo">
 <img src="../../../img/maixpy_m5stickv/load-mnemonic-options-250.png" class="m5stickv">
@@ -18,18 +18,18 @@ camera-scan-tips.en.txt
 
 #### QR Code
 
-It's unpleasant having to manually enter 12 or 24 words every time you want to use Krux. To remedy this you can instead use the device's camera to read a QR code containing the words. Krux will decode QR codes of four types:
+It's unpleasant having to manually enter 12 or 24 words every time you want to use VaultSeed. To remedy this you can instead use the device's camera to read a QR code containing the words. VaultSeed will decode QR codes of four types:
 
 - **Plain text QR**: The mnemonic words encoded as text, with words separated by spaces.
 - [SeedQR](https://github.com/SeedSigner/seedsigner/blob/dev/docs/seed_qr/README.md): Basically, it is the mnemonic words of the respective BIP39 numbers concatenated, encoded as text.
 - [Compact SeedQR](https://github.com/SeedSigner/seedsigner/blob/dev/docs/seed_qr/README.md/#compactseedqr-specification): Basically, it is the mnemonic words bits concatenated as bytes.
-- [Encrypted Mnemonic](../features/encryption/encryption.md/#regarding-bip39-mnemonics): A specification created by Krux that encrypts the mnemonic words bits and adds some information about the encryption used.
+- [Encrypted Mnemonic](../features/encryption/encryption.md/#regarding-bip39-mnemonics): A specification created by VaultSeed that encrypts the mnemonic words bits and adds some information about the encryption used.
 
-After opening a wallet via one of the methods available you can use Krux to [backup the mnemonic](navigating-the-main-menu.md#backup-mnemonic) as QR code, [transcribe](../features/QR-transcript-tools.md) them to paper or metal using the transcription helpers or attach a thermal printer to your Krux and print out the mnemonic as QR. Check out the [printing section](../features/printing/printing.md) for more information.
+After opening a wallet via one of the methods available you can use VaultSeed to [backup the mnemonic](navigating-the-main-menu.md#backup-mnemonic) as QR code, [transcribe](../features/QR-transcript-tools.md) them to paper or metal using the transcription helpers or attach a thermal printer to your VaultSeed and print out the mnemonic as QR. Check out the [printing section](../features/printing/printing.md) for more information.
 You can also use [an offline QR code generator for this](https://iancoleman.io/bip39/) (ideally on an airgapped device).
 
 #### Tinyseed, OneKey KeyTag or Binary Grid
-[Tinyseed](https://tinyseed.io/), [Onekey KeyTag](https://onekey.so/products/onekey-keytag/) and others directly encode a seed as binary, allowing for a very compact mnemonic storage. Krux devices have machine vision capabilities that allow users to scan these metal plates and instantly load mnemonics engraved on them (this feature is not available in [Krux Mobile Android app](../../faq.md#what-is-krux-mobile-android-app)).
+[Tinyseed](https://tinyseed.io/), [Onekey KeyTag](https://onekey.so/products/onekey-keytag/) and others directly encode a seed as binary, allowing for a very compact mnemonic storage. VaultSeed devices have machine vision capabilities that allow users to scan these metal plates and instantly load mnemonics engraved on them (this feature is not available in [VaultSeed Mobile Android app](../../faq.md#what-is-krux-mobile-android-app)).
 
 To ensure a proper scan, place the backup plate over a black background and fill in the punched areas with black to enhance contrast. Alternatively, you can scan a [thermally printed version](../features/printing/printing.md) or a completed template. You can view some [examples of encoded mnemonics here](../features/tinyseed.md), and explore our [available transcription templates here](../templates/templates.md).
 
@@ -45,7 +45,7 @@ Manually type `Words`, `Word Numbers`, `Tinyseed` (toggle the bits or punches) o
 <img src="../../../img/maixpy_m5stickv/load-mnemonic-via-text-word-250.png" align="right" class="m5stickv">
 <img src="../../../img/maixpy_amigo/load-mnemonic-via-text-word-300.png" align="right" class="amigo">
 
-Enter each word of your BIP39 mnemonic one at a time. Krux will disable impossible-to-reach letters as you type and will attempt to autocomplete your words to speed up the process.
+Enter each word of your BIP39 mnemonic one at a time. VaultSeed will disable impossible-to-reach letters as you type and will attempt to autocomplete your words to speed up the process.
 
 <div style="clear: both"></div>
 

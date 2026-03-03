@@ -1,13 +1,13 @@
-This page explains how to install Krux from a test (beta), pre-built release.
+This page explains how to install VaultSeed from a test (beta), pre-built release.
 
 ### Warning
 Keep in mind that these are unsigned binaries.
 
 ### Download
-Download experimental compiled firmware at [test (beta) repository](https://github.com/odudex/krux_binaries) or the Mobile Android app `apk` at [KruxMobileApp](https://github.com/selfcustody/KruxMobileApp).
+Download experimental compiled firmware at [beta releases page](https://github.com/VoidHashh/VaultSeed/releases) or the Mobile Android app `apk` at [VaultSeed](https://github.com/VoidHashh/VaultSeed).
 
 #### Mobile - Android
-The [Krux Mobile Android app](../../faq.md#what-is-krux-mobile-android-app) is designed for learning about Krux and Bitcoin air-gapped transactions. Due to the numerous potential vulnerabilities inherent in smartphones, such as the lack of control over the operating system, libraries, and hardware peripherals, the Krux app should NOT be used to manage wallets containing savings or important keys and mnemonics. For secure management of your keys, a dedicated device is recommended.
+The [VaultSeed Mobile Android app](../../faq.md#what-is-krux-mobile-android-app) is designed for learning about VaultSeed and Bitcoin air-gapped transactions. Due to the numerous potential vulnerabilities inherent in smartphones, such as the lack of control over the operating system, libraries, and hardware peripherals, the VaultSeed app should NOT be used to manage wallets containing savings or important keys and mnemonics. For secure management of your keys, a dedicated device is recommended.
 
 #### Compiled firmware for Kendryte K210 devices
 #### M5StickV
@@ -142,3 +142,5 @@ To Flash TZT you need to pass the `-B dan` parameter.
 ```pwsh
 .\ktool-win.exe -B dan -b 1500000 maixpy_tzt\kboot.kfpkg
 ```
+
+

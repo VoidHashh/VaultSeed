@@ -1,7 +1,7 @@
-You can install Krux (both official or beta releases) onto your K210-based device using our
-official desktop application, **Krux-Installer**:
+You can install VaultSeed (both official or beta releases) onto your K210-based device using our
+official desktop application, **VaultSeed Installer**:
 
-[<img src="../../../img/badge_github.png" width="186">](https://github.com/selfcustody/krux-installer/releases)
+[<img src="../../../img/badge_github.png" width="186">](https://github.com/VoidHashh/VaultSeed/releases)
 
 Install instructions:
 
@@ -12,5 +12,6 @@ Install instructions:
 - [:material-fedora: Fedora and like](./fedora-like.md)
 - [:material-linux: Other linux distros](./other-linux-distro.md)
 
-> ⚠️  If you find any bug, please submit a
-[issue here](https://github.com/selfcustody/krux-installer/issues).
+> âš ï¸  If you find any bug, please submit a
+[issue here](https://github.com/VoidHashh/VaultSeed/issues).
+

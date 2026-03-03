@@ -1,0 +1,52 @@
+# Compiled Sources
+###################
+*.o
+*.a
+*.elf
+*.map
+*.hex
+*.dis
+*.exe
+*.kfpkg
+firmware.bin
+bootloader*
+
+# Packages
+############
+
+# Logs and Databases
+######################
+*.log
+
+# VIM Swap Files
+######################
+*.swp
+
+# Test failure outputs
+######################
+tests/results/*
+
+# Python cache files
+######################
+__pycache__/
+*.pyc
+
+# Customized Makefile/project overrides
+######################
+GNUmakefile
+user.props
+
+# Generated rst files
+######################
+genrst/
+
+# MacOS desktop metadata files
+######################
+.DS_Store
+
+build/lib/
+build/CMakeFiles/
+build/*.cmake
+build/*.txt
+build/*.json
+build/Makefile

@@ -1,10 +1,10 @@
 # :material-debian: Download assets
     
-* [`{{latest_installer_deb}}`](https://github.com/selfcustody/krux-installer/releases/download/{{latest_installer}}/{{latest_installer_deb}})
+* [`{{latest_installer_deb}}`](https://github.com/VoidHashh/VaultSeed/releases/download/{{latest_installer}}/{{latest_installer_deb}})
 
 ## Install
 
-**Krux-Installer** isn't available on Debian or Ubuntu repositories.
+**VaultSeed Installer** isn't available on Debian or Ubuntu repositories.
 Therefore, only the `apt-get install` command will not work. 
 To install, it'll be necessary two steps:
 
@@ -28,3 +28,4 @@ to activate the `sudoless` flash procedure.
 ----8<----
 after-install-installer.en.txt
 ----8<----
+

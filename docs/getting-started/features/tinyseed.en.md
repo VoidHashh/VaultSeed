@@ -13,11 +13,11 @@ The examples below have been created so that you can test the workflow for scann
 ## Size, Offset and Padding Reference
 The general logic for how these are processed is:
 
-1. Krux first looks for a square (works best if with a well lit square, with clean edges, on a dark background).
+1. VaultSeed first looks for a square (works best if with a well lit square, with clean edges, on a dark background).
 2. The square is checked and if the ratio of length to height is within a defined range for the given seed type, the square is further processed (uses the aspect_high and aspect_low variables).
 3. An X and Y offset are applied to work out the corner of the seed grid within the seed plate. Some devices like the Maix Amigo use a mirrored coordinate system and some seed types will have a slightly different layout on the front and back of the plate (uses the x_offset and y_offset variables, p0 for the front face and p1 for the reverse face).
 4. The location of each cell within the 12x12 grid is calculated (uses the xpad and ypad variables).
-5. Krux uses the grid created in *step 4.* to evaluate which cells are marked and which are blank, once a seed with a valid checksum is detected, the user can then confirm the dots.
+5. VaultSeed uses the grid created in *step 4.* to evaluate which cells are marked and which are blank, once a seed with a valid checksum is detected, the user can then confirm the dots.
 
 If you have a different type of grid that you want to use, you will need to edit the offsets and padding numbers in `tiny_seed.py` (all of the sizes are scaled based on the size of the square detected in *step 1.*).
 

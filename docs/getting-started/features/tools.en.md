@@ -1,4 +1,4 @@
-Here are some useful tools that are available as soon as Krux starts! These are offered as a complement to managing your device and wallets.
+Here are some useful tools that are available as soon as VaultSeed starts! These are offered as a complement to managing your device and wallets.
 
 <img src="../../../img/maixpy_amigo/tools-options-300.png" class="amigo">
 <img src="../../../img/maixpy_m5stickv/tools-options-250.png" class="m5stickv">
@@ -29,7 +29,7 @@ The Convert Datum menu allows access to common encodings for conversion between 
 <img src="../../../img/maixpy_m5stickv/device-tests-options-250.png" align="right" class="m5stickv">
 <img src="../../../img/maixpy_amigo/device-tests-options-300.png" align="right" class="amigo">
 
-Run these quick checks to ensure your Krux device is functioning properly.
+Run these quick checks to ensure your VaultSeed device is functioning properly.
 
 <div style="clear: both"></div>
 
@@ -117,8 +117,8 @@ This option permanently removes all stored encrypted mnemonics, settings and `TC
 
 This option allows you to remove any stored encrypted mnemonic from the device's internal memory or an SD card. For more information, see [encryption](./encryption/encryption.md).
 
-When mnemonics are removed from the device's flash memory, Krux will no longer be able to access them. However, as with most operating systems, the data may still be recoverable using specialized tools. If you stored any important keys with a [weak encryption key](https://www.hivesystems.com/blog/are-your-passwords-in-the-green), it is recommended to use the **Flash Tools -> Erase User's Data** feature above to ensure that the data is irrecoverable.
+When mnemonics are removed from the device's flash memory, VaultSeed will no longer be able to access them. However, as with most operating systems, the data may still be recoverable using specialized tools. If you stored any important keys with a [weak encryption key](https://www.hivesystems.com/blog/are-your-passwords-in-the-green), it is recommended to use the **Flash Tools -> Erase User's Data** feature above to ensure that the data is irrecoverable.
 
-**Note**: When mnemonics are removed from an SD card, Krux will overwrite the region where the encrypted mnemonic was stored with empty data. This makes it more secure to delete mnemonics from SD cards using Krux rather than a PC or another device. However, Krux does not have a "Wipe" feature for SD cards; you can find this feature in third-party applications.
+**Note**: When mnemonics are removed from an SD card, VaultSeed will overwrite the region where the encrypted mnemonic was stored with empty data. This makes it more secure to delete mnemonics from SD cards using VaultSeed rather than a PC or another device. However, VaultSeed does not have a "Wipe" feature for SD cards; you can find this feature in third-party applications.
 
 <div style="clear: both"></div>

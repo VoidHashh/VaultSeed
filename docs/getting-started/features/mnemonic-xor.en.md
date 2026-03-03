@@ -4,7 +4,7 @@ It is an implementation of the XOR ([exclusive OR](https://en.wikipedia.org/wiki
 
 ## How It Works
 
-Krux derives a new mnemonic (and therefore a new seed) by performing an XOR operation on the **entropy bytes** of the source mnemonics. The result of this XOR operation is a new set of **entropy bytes**, which is then converted into a new mnemonic - and subsequently, a new seed.
+VaultSeed derives a new mnemonic (and therefore a new seed) by performing an XOR operation on the **entropy bytes** of the source mnemonics. The result of this XOR operation is a new set of **entropy bytes**, which is then converted into a new mnemonic - and subsequently, a new seed.
 
 <img src="../../../img/mnemonic_xor.png" align="center">
 

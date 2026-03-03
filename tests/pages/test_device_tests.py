@@ -189,7 +189,7 @@ def test_printer_test_tool(amigo, mocker, mocked_print_qr):
 
     # Assert that the print function was called with the expected text
     mocked_print_qr.assert_called_with(
-        "Krux Printer Test QR", title="Krux Printer Test QR", check_printer=False
+        "VaultSeed Printer Test QR", title="VaultSeed Printer Test QR", check_printer=False
     )
     assert ctx.input.wait_for_button.call_count == len(BTN_SEQUENCE)
 

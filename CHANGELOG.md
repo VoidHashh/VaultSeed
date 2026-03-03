@@ -1,6 +1,6 @@
 # Changelog 25.10.1 - October 2025
 
-### Bugfix: Krux encrypted mnemonic as a passphrase is invalid, but no error was raised
+### Bugfix: VaultSeed encrypted mnemonic as a passphrase is invalid, but no error was raised
 Instead of displaying an error, the base43 encoded KEF Envelope was displayed and used as the passphrase - deriving the wrong wallet; since version 25.09.0
 Solution: better error handling when decrypted data is invalid for the current context; error: "Failed to load".  Stricter validation to ensure passphrases are ASCII-only strings.
 
@@ -10,13 +10,13 @@ Solution: better error handling when decrypted data is invalid for the current c
 The TZT CanMV is similar to the WonderMV but includes five buttons and a premium milled aluminum housing. Computer simulator for the TZT device is also included.
 
 ### Mnemonic XOR
-Krux can now apply XOR operations on entropy bytes between a loaded mnemonic and another chosen one, similar to Coinkite's `SeedXOR` protocol.
+VaultSeed can now apply XOR operations on entropy bytes between a loaded mnemonic and another chosen one, similar to Coinkite's `SeedXOR` protocol.
 
 ### Code Optimization
 Reduced firmware size by 25% and lowered RAM usage through code cleanup and optimizations.
 
 ### Increased SD Card Compatibility
-Krux can now recognize and work with a wider range of SD cards that were previously unsupported.
+VaultSeed can now recognize and work with a wider range of SD cards that were previously unsupported.
 
 ### Discontinued Support for Maix Bit Device
 The Maix Bit device has long been discouraged due to its poor-quality camera. Starting with this release, we are discontinuing support and it will no longer be included in future builds. The support and parameters for building its firmware from source, however, will be kept.
@@ -141,13 +141,13 @@ The Tamper Check Flash Hash now appears immediately after the Tamper Check code 
 Display orientation on Yahboom and WonderMV devices can now be flipped.
 
 ### SD Card PSBT Signing Preserves All Fields
-When signing via SD cards, all fields in a PSBT—including signatures from other keys—are preserved. This facilitates workflows across multiple devices and locations by allowing a single PSBT file to be sequentially signed by different devices.
+When signing via SD cards, all fields in a PSBTâ€”including signatures from other keysâ€”are preserved. This facilitates workflows across multiple devices and locations by allowing a single PSBT file to be sequentially signed by different devices.
 
 ### Other Bug Fixes and Optimizations
 - New encrypted mnemonics show key-strength score during confirmation. If stored, will be sorted alphabetically.
 - Flash Map drawing errors have been corrected.
 - Address scanning for Blue Wallet has been fixed following its export format change.
-- The use of “h” to indicate hardened derivation path nodes has been standardized.
+- The use of â€œhâ€ to indicate hardened derivation path nodes has been standardized.
 - A faster algorithm for double mnemonic calculation has been introduced.
 - PSBT change detection has been made more restrictive.
 
@@ -189,8 +189,8 @@ An indicator has been added to the bottom of keypads to help users identify the 
 ### WonderMV Simulator
 Computer simulator for WonderMV device has been added.
 
-### Krux Ethos
-Guidelines have been created to assist with decision-making regarding the Krux project's interactions with contributors, users, and businesses that may create products or services related to Krux.
+### VaultSeed Ethos
+Guidelines have been created to assist with decision-making regarding the VaultSeed project's interactions with contributors, users, and businesses that may create products or services related to VaultSeed.
 
 ### Minor Bugfixes and Refactors
 Several code improvements for better reliability and efficiency.
@@ -241,7 +241,7 @@ When generating a new mnemonic using the camera, users can now choose to create 
 To improve touch accuracy, especially on small touchscreens, the touch surface area of buttons has been increased to make better use of the available screen space.
 
 ### Add Account Descriptor Type Support 
-Krux now accepts urtype.Account type QR code descriptors.
+VaultSeed now accepts urtype.Account type QR code descriptors.
 
 ### Enhanced File Exploring
 File explorer now better differentiate files from folders.
@@ -274,7 +274,7 @@ Several optimizations to increase performance and code quality.
 The Maix Cube now has its first official release. This affordable and compact cube-shaped device, equipped with a built-in battery, is an excellent choice for those seeking a discreet option.
 
 ### Frozen Code - Speed and Security Improvement
-Krux now runs cross-compiled (frozen) Python code instead of real-time compiled code. The Python real-time compiler and REPL have been disabled.
+VaultSeed now runs cross-compiled (frozen) Python code instead of real-time compiled code. The Python real-time compiler and REPL have been disabled.
 
 ### More Single-sig Script Types Support
 Beyond Native Segwit, users can now load Legacy, Nested Segwit, and Taproot script type wallets.
@@ -289,7 +289,7 @@ New workflow to load wallets, faster for default settings and with more options 
 Generate, export, and load BIP85 child mnemonics.
 
 ### Wallet Sans Key
-Krux now has a tool to load a trusted wallet descriptor to view addresses without the need for private keys.
+VaultSeed now has a tool to load a trusted wallet descriptor to view addresses without the need for private keys.
 
 ### Add BBQr Support
 Scan and export PSBTs and wallet descriptors in the compact and efficient BBQr format.
@@ -307,7 +307,7 @@ Disable backup tools and hide private key data when a wallet is loaded.
 Detect and warn the user if the PSBT path differs from the loaded wallet's path. This is useful for users who use multiple script types with the same key, ensuring they use the correct account when sending transactions.
 
 ### Show Multisig PSBT Policy When Descriptor is Not Loaded
-Ensure you are signing for the correct multisig setup by inspecting PSBT's fingerprints if the wallet descriptor is not loaded. If the descriptor is loaded, verification is done by Krux.
+Ensure you are signing for the correct multisig setup by inspecting PSBT's fingerprints if the wallet descriptor is not loaded. If the descriptor is loaded, verification is done by VaultSeed.
 
 ### Status Bar Shows Loaded Fingerprint
 The loaded key's fingerprint is now shown in the status bar.
@@ -316,7 +316,7 @@ The loaded key's fingerprint is now shown in the status bar.
 Show the transaction's fee as a proportion of the transaction cost, warning if it is greater than 10%.
 
 ### Sats/vB
-PSBT now displays an accurate estimation of the transaction’s feerate.
+PSBT now displays an accurate estimation of the transactionâ€™s feerate.
 
 ### Brightness Control for Maix Cube and M5stickV
 Adjust backlight intensity for better viewing and scanning from your Cube or M5stickV.
@@ -331,10 +331,10 @@ Add more display settings for Amigo to allow different display models to work pr
 The time to scan or display wallet addresses is now less than half compared to the previous version.
 
 ### Sign PSBTs Without Fingerprints
-Krux will now sign PSBTs even if a fingerprint is not properly set on the coordinator. Krux will still warn the user to set it correctly or use Krux-exported public keys to set their coordinators.
+VaultSeed will now sign PSBTs even if a fingerprint is not properly set on the coordinator. VaultSeed will still warn the user to set it correctly or use VaultSeed-exported public keys to set their coordinators.
 
 ### Dice Rolls Pattern Detection
-Krux warns the user if it suspects there are patterns within the actual rolls
+VaultSeed warns the user if it suspects there are patterns within the actual rolls
 
 ### Optimized SD Card Signing
 Better suited for large transactions, SD card signing is now more RAM efficient, allowing transactions with +100 inputs to be signed in less than a minute.
@@ -366,7 +366,7 @@ Bugfixes, optimizations and code refactoring.
 Option on tools to wipe the device, permanently removing settings and stored encrypted mnemonics by erasing every single bit of user's flash space.
 
 ### Better Deletion of Mnemonics Stored on SD card
-When deleting an encrypted mnemonic from an SD card, Krux will now overwrite the memory area making it impossible to recover the previously stored data.
+When deleting an encrypted mnemonic from an SD card, VaultSeed will now overwrite the memory area making it impossible to recover the previously stored data.
 
 ### Save and Load Wallet Output Descriptor from SD card
 Create or load from a wallet output descriptor file on an SD card. The backup file format is compatible with most coordinators.
@@ -414,7 +414,7 @@ More receive and change addresses per page are shown on bigger screens.
 Use the latest Embit release.
 
 ### Maix Dock Simulator
-Now Krux PC simulator can also run in Maix Dock mode, mimicking appearance and characteristics of the most DIY Krux device.
+Now VaultSeed PC simulator can also run in Maix Dock mode, mimicking appearance and characteristics of the most DIY VaultSeed device.
 
 ### New Compatible Device - Yahboom
 The Yahboom Aimotion K210 module, a compact touchscreen device, now has its first official firmware release.
@@ -449,7 +449,7 @@ Use camera as a source of entropy to quickly create a mnemonic.
 
 ### Tiny Seed - Export, Print, Punch, Manually Load or Scan
 Import and export a binary representation of your mnemonic, in a format popularized by Tiny Seed metal plates. BIP39 mnemonic words number, ranging from 1 to 2048 are punched in binary format on a rectangular grid.
-Krux will automatically convert a mnemonic to Tiny Seed format allowing to print or transcript it. You can also load a tiny seed toggling word bits on screen, or make use of machine vision capabilities of K210 chip to directly scan a Tiny Seed mnemonic backup stored on metal or paper.
+VaultSeed will automatically convert a mnemonic to Tiny Seed format allowing to print or transcript it. You can also load a tiny seed toggling word bits on screen, or make use of machine vision capabilities of K210 chip to directly scan a Tiny Seed mnemonic backup stored on metal or paper.
 
 ### Stackbit - Import and Export
 Without needing tools, guides or dictionaries, import and export another metal plate backup format, where each of the four digits of the word's number is a sum of marked (punched) numbers 1,2,4 and 8.
@@ -514,12 +514,12 @@ This patch release reverts the zpub QR code format, once again including key ori
 
 It is recommended to update to this version if you are using a single-key "Imported Watch-only" wallet with BlueWallet and are seeing a "cannot sign" error message when trying to send an outgoing transaction. If so, please do the following:
 
-1. Upgrade Krux to this new release
+1. Upgrade VaultSeed to this new release
 2. Delete the affected wallet in BlueWallet (funds are safu as long as you have your mnemonic)
-3. Create a new wallet in BlueWallet by importing from the new zpub QR code that Krux now displays.
+3. Create a new wallet in BlueWallet by importing from the new zpub QR code that VaultSeed now displays.
 4. Open the wallet in BlueWallet and pull down to fetch the old wallet's transaction history.
-5. Create a new outgoing transaction and scan the QR code with Krux.
-6. Krux should display the tx information and allow you to sign.
+5. Create a new outgoing transaction and scan the QR code with VaultSeed.
+6. VaultSeed should display the tx information and allow you to sign.
 7. Display the signed QR back to BlueWallet.
 8. Broadcast!
 
@@ -531,38 +531,38 @@ This release is to fix a bug that would have prevented Amigos from performing ai
 
 # Version 22.08.0 - August 10, 2022
 
-This latest version of Krux is brought to you by @odudex, who tirelessly worked for months to get Krux working on three new devices: the Maix Amigo, Maix Bit, and Maix Dock. Thank you for all your hard work! 
+This latest version of VaultSeed is brought to you by @odudex, who tirelessly worked for months to get VaultSeed working on three new devices: the Maix Amigo, Maix Bit, and Maix Dock. Thank you for all your hard work! 
 
-Many other improvements to Krux were made along the way which will be listed below. 
+Many other improvements to VaultSeed were made along the way which will be listed below. 
 
 Enjoy!
 
 ## Installing
-For instructions on how to install this release, please follow the *Getting Started* guide on [https://selfcustody.github.io/krux/](https://selfcustody.github.io/krux/).
+For instructions on how to install this release, please follow the *Getting Started* guide on [https://voidhashh.github.io/VaultSeed/](https://voidhashh.github.io/VaultSeed/).
 
-To perform an airgapped upgrade (with a microSD card) from a previous signed release, please follow the directions here: [https://selfcustody.github.io/krux/getting-started/installing/#upgrade-via-microsd-card](https://selfcustody.github.io/krux/getting-started/installing/#upgrade-via-microsd-card)
+To perform an airgapped upgrade (with a microSD card) from a previous signed release, please follow the directions here: [https://voidhashh.github.io/VaultSeed/getting-started/installing/#upgrade-via-microsd-card](https://voidhashh.github.io/VaultSeed/getting-started/installing/#upgrade-via-microsd-card)
 
 ## Changes
-### ¡Three Amigos!
-Krux now supports three new devices: Maix Amigo, Maix Bit, and Maix Dock. The Amigo is an all-in-one device with a touchscreen display, while the Dock and Bit are more DIY-focused kits where some assembly is required.
+### Â¡ThreeÂ Amigos!
+VaultSeed now supports three new devices: Maix Amigo, Maix Bit, and Maix Dock. The Amigo is an all-in-one device with a touchscreen display, while the Dock and Bit are more DIY-focused kits where some assembly is required.
  
 ### New touchscreen UI + UX enhancements
-Along with being usable on multiple devices now, Krux also has native touchscreen support and many refinements to its UI to make better use of the screen space it has. More work has gone into improving UX including the ability to escape out of the mnemonic loading or creation screens at any point.
+Along with being usable on multiple devices now, VaultSeed also has native touchscreen support and many refinements to its UI to make better use of the screen space it has. More work has gone into improving UX including the ability to escape out of the mnemonic loading or creation screens at any point.
 
 ### Built-in translations + Portuguese
-Krux now includes translations in the firmware due to using a more space-efficient font format. With this change, the rendering issues with Vietnamese characters have also been fixed. A new Portuguese translation has been added.
+VaultSeed now includes translations in the firmware due to using a more space-efficient font format. With this change, the rendering issues with Vietnamese characters have also been fixed. A new Portuguese translation has been added.
 
-### Amigo support added to Krux Simulator
-The Krux Simulator, which lets you simulate on your PC what it would be like to run Krux on a device, was updated to support the Amigo. There is also now a PC option if you want to run Krux "natively" on your PC (**NOTE**: This is a toy for fun and is *not recommended* for real usage).
+### Amigo support added to VaultSeed Simulator
+The VaultSeed Simulator, which lets you simulate on your PC what it would be like to run VaultSeed on a device, was updated to support the Amigo. There is also now a PC option if you want to run VaultSeed "natively" on your PC (**NOTE**: This is a toy for fun and is *not recommended* for real usage).
 
 ### CompactSeedQR support
-Support for scanning SeedSigner’s newer "CompactSeedQR" QR codes
+Support for scanning SeedSignerâ€™s newer "CompactSeedQR" QR codes
 
 ### BIP39 passphrases
 Support has been added for BIP39 passphrases. After loading a mnemonic, you will be asked if you want to "Add a passphrase?" to it.
 
 ### Export signed PSBTs to microSD
-You can now save a signed PSBT to microSD which should help users having trouble getting their webcams to read the tiny QR codes on the M5StickV. Furthermore, Krux supports loading a PSBT from microSD as well if you want to forgo QR codes entirely.
+You can now save a signed PSBT to microSD which should help users having trouble getting their webcams to read the tiny QR codes on the M5StickV. Furthermore, VaultSeed supports loading a PSBT from microSD as well if you want to forgo QR codes entirely.
 
 ### Better mnemonic generation
 The flow for entering rolls has been streamlined to allow more rapid input, with your string of rolls now being visible along the top of the screen as you go. We also introduced a change to how the D6 roll string is built, no longer including "-" between rolls prior to hashing to have consistency with ColdCard and SeedSigner. 
@@ -572,7 +572,7 @@ Note: We continue to use a "-" separator between D20 rolls to avoid reducing sta
 ### Back button and rotary encoders
 All devices, even the M5StickV, support moving backward in the UI now. The left-side power button on the M5StickV no longer does one-press resets and instead acts as a third input button. Note: You can still shutdown the device by holding it down for 5 seconds.
 
-Support for using a rotary encoder as the previous and next buttons has also been added. Check out @odudex’s open source case design with instructions on how to use one with the Dock:
+Support for using a rotary encoder as the previous and next buttons has also been added. Check out @odudexâ€™s open source case design with instructions on how to use one with the Dock:
 [https://github.com/odudex/DockEncoderCase](https://github.com/odudex/DockEncoderCase)
 
 Just to note, he also has a case design for the Bit:
@@ -582,17 +582,18 @@ Just to note, he also has a case design for the Bit:
 ### Updated website + i18n future
 The Github Pages site has been updated with new documentation and screenshots for the Amigo.
 
-A new internationalization (i18n) framework has been added by @qlrd that will allow the website to be easily translated to other languages so we can eventually have documentation for every language that Krux supports!
+A new internationalization (i18n) framework has been added by @qlrd that will allow the website to be easily translated to other languages so we can eventually have documentation for every language that VaultSeed supports!
 
-@qlrd is also working on a graphical installer we hope to start making use of in the future when it’s ready. Keep tabs on it here: [https://github.com/qlrd/krux-installer](https://github.com/qlrd/krux-installer)
+@qlrd is also working on a graphical installer we hope to start making use of in the future when itâ€™s ready. Keep tabs on it here: [https://github.com/qlrd/vaultseed-installer](https://github.com/qlrd/vaultseed-installer)
 
 
 # Version 22.03.0 - March 31, 2022
-Finally, after much TODO, the first official release of Krux is out!
+Finally, after much TODO, the first official release of VaultSeed is out!
 
-Krux will be following a calendar version release schedule similar to Ubuntu, hence the first release is version (20)22.03.0. If any glaring security issues or important bugfixes come up, they will make their way into point releases such as 22.03.1, 22.03.2, etc. All new work will go toward major releases which will get a new year and month combo.
+VaultSeed will be following a calendar version release schedule similar to Ubuntu, hence the first release is version (20)22.03.0. If any glaring security issues or important bugfixes come up, they will make their way into point releases such as 22.03.1, 22.03.2, etc. All new work will go toward major releases which will get a new year and month combo.
 
-Thank you to everyone who contributed their time and effort toward this release. It's been very cool to see people take an interest in the project! Also, a special thank you is due to @stepansnigirev for creating the embit library that Krux leans so heavily on.
+Thank you to everyone who contributed their time and effort toward this release. It's been very cool to see people take an interest in the project! Also, a special thank you is due to @stepansnigirev for creating the embit library that VaultSeed leans so heavily on.
 
 ## Installing
-For instructions on how to install this release, please follow the Getting Started guide on [https://selfcustody.github.io/krux/](https://selfcustody.github.io/krux/).
+For instructions on how to install this release, please follow the Getting Started guide on [https://voidhashh.github.io/VaultSeed/](https://voidhashh.github.io/VaultSeed/).
+

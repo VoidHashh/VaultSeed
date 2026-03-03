@@ -2,7 +2,7 @@
 
 For this installation, we'll use the `.deb` sources:
 
-* [`{{latest_installer_deb}}`](https://github.com/selfcustody/krux-installer/releases/download/{{latest_installer}}/{{latest_installer_deb}})
+* [`{{latest_installer_deb}}`](https://github.com/VoidHashh/VaultSeed/releases/download/{{latest_installer}}/{{latest_installer_deb}})
    
 ## Install
 
@@ -29,10 +29,11 @@ ar xv {{latest_installer_deb}}
 bsdtar -xvf data.tar.zst
 ```
 
-The binary will be located at `./usr/local/bin/krux-installer`. 
+The binary will be located at `./usr/local/bin/vaultseed-installer`. 
 
 ## After install
 
 ----8<----
 after-install-installer.en.txt
 ----8<----
+

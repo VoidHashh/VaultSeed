@@ -1,6 +1,6 @@
 Once you've generated a mnemonic, securely backed it up, and successfully tested the recovery process, you’re ready to set up a coordinator.
 
-Krux works with:
+VaultSeed works with:
 
 - [Sparrow Wallet](https://www.sparrowwallet.com/) (desktop)
 - [Specter Desktop](https://specter.solutions/) (desktop)
@@ -15,25 +15,25 @@ Krux works with:
 
 Download and install the appropriate version of your chosen coordinator wallet for your device and operating system.
 
-## Step 2: Create a New Wallet with Krux as a Signer
+## Step 2: Create a New Wallet with VaultSeed as a Signer
 
-Depending on the coordinator, the steps to add Krux as a signer may vary slightly:
+Depending on the coordinator, the steps to add VaultSeed as a signer may vary slightly:
 
-- **Specter and Nunchuk Single-sig:** Add Krux key, then create a wallet that uses it.
-- **Specter and Nunchuk Multisig:** Add Krux key, add other keys, then create a wallet that uses them.
+- **Specter and Nunchuk Single-sig:** Add VaultSeed key, then create a wallet that uses it.
+- **Specter and Nunchuk Multisig:** Add VaultSeed key, add other keys, then create a wallet that uses them.
 - **Sparrow, Liana, Bitcoin Safe and BlueWallet**: Create a wallet (or vault in Blue Wallet) and add key(s) during setup.
 - **Bitcoin Keeper**: Add Wallet -> Create Wallet, select single-key or multi-key, and add key(s). Or add key(s), then Add Wallet -> Create Wallet and select that key(s).
 <!-- -->
 
-1. Load a mnemonic and wallet in Krux.
+1. Load a mnemonic and wallet in VaultSeed.
 
     <img src="../../../img/maixpy_amigo/load-mnemonic-seq-mnemonic-300.png" class="amigo">
     <img src="../../../img/maixpy_amigo/load-mnemonic-seq-overview-300.png" class="amigo">
     <img src="../../../img/maixpy_m5stickv/load-mnemonic-seq-mnemonic-250.png" class="m5stickv">
     <img src="../../../img/maixpy_m5stickv/load-mnemonic-seq-overview-250.png" class="m5stickv">
 
-2. On your coordinator, select **"Krux"** if it's listed among the available signer devices. If not, choose **"Other"** or a QR code-compatible signer such as **"SeedSigner"**. Since Krux supports various QR formats, other available options may also be compatible.
-3. When prompted by your coordinator to import signer's public key, access the `Extended Public Key` on Krux.
+2. On your coordinator, select **"VaultSeed"** if it's listed among the available signer devices. If not, choose **"Other"** or a QR code-compatible signer such as **"SeedSigner"**. Since VaultSeed supports various QR formats, other available options may also be compatible.
+3. When prompted by your coordinator to import signer's public key, access the `Extended Public Key` on VaultSeed.
 
     <img src="../../../img/maixpy_amigo/extended-public-key-selected-300.png" class="amigo">
     <img src="../../../img/maixpy_m5stickv/extended-public-key-selected-250.png" class="m5stickv">
@@ -46,7 +46,7 @@ Depending on the coordinator, the steps to add Krux as a signer may vary slightl
     <img src="../../../img/maixpy_m5stickv/extended-public-key-wsh-xpub-qr-250.png" class="m5stickv">
 
 5. Scan this QR code with your coordinator.
-6. Ensure the coordinator’s wallet attributes (policy type, script type, fingerprint, and derivation) match those in Krux.
+6. Ensure the coordinator’s wallet attributes (policy type, script type, fingerprint, and derivation) match those in VaultSeed.
 
 Alternatively, you can export the extended public keys as files to an SD card. Instead of displaying them as QR codes, select the `XPUB - Text` option, then choose `Save to SD card`.
 
@@ -66,7 +66,7 @@ Alternatively, you can export the extended public keys as files to an SD card. I
     - **BlueWallet**: "Export Coordination Setup"
     - **Bitcoin Keeper**: "Wallet configuration file"
 2. Export the descriptor as a QR code or file.
-3. On Krux, go to **Wallet -> Wallet Descriptor** to scan the descriptor QR code or load it via SD card.
+3. On VaultSeed, go to **Wallet -> Wallet Descriptor** to scan the descriptor QR code or load it via SD card.
 
 <img src="../../../img/maixpy_amigo/wallet-load-prompt-300.png" class="amigo big">
 <img src="../../../img/maixpy_amigo/wallet-wsh-load-prompt-300.png" class="amigo big">
@@ -86,8 +86,8 @@ Alternatively, you can export the extended public keys as files to an SD card. I
 
 For single-sig or multisig (after loading a descriptor):
 
-- Go to `Address` on Krux.
-- List `Receive Addresses` and `Change Addresses` or use `Scan Address` to verify if addresses from your coordinator are matched by Krux.
+- Go to `Address` on VaultSeed.
+- List `Receive Addresses` and `Change Addresses` or use `Scan Address` to verify if addresses from your coordinator are matched by VaultSeed.
 
 <div style="clear: both"></div>
 
@@ -103,7 +103,7 @@ Once addresses are verified, send a small test amount to your wallet. Test signi
 
 2. Export the transaction as a QR code.
 
-3. On Krux, go to **Sign -> PSBT -> Load from camera**.
+3. On VaultSeed, go to **Sign -> PSBT -> Load from camera**.
 
 4. Scan the animated QR code.
 
@@ -115,7 +115,7 @@ Once addresses are verified, send a small test amount to your wallet. Test signi
 
 Alternatively, you can use an SD card:
 
-Save the transaction as a file on an SD card. On Krux, go to **Sign -> PSBT -> Load from SD card** and `Sign to SD card`. Load the signed transaction on the coordinator and broadcast it.
+Save the transaction as a file on an SD card. On VaultSeed, go to **Sign -> PSBT -> Load from SD card** and `Sign to SD card`. Load the signed transaction on the coordinator and broadcast it.
 
 ### Messages
 

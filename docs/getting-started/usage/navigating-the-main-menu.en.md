@@ -1,4 +1,4 @@
-After entering your mnemonic, and loading a wallet, you will find yourself on Krux's main menu. Below is a breakdown of the entries available:
+After entering your mnemonic, and loading a wallet, you will find yourself on VaultSeed's main menu. Below is a breakdown of the entries available:
 
 <img src="../../../img/maixpy_amigo/home-options-300.png" class="amigo">
 <img src="../../../img/maixpy_m5stickv/home-options-250.png" class="m5stickv">
@@ -57,7 +57,7 @@ This feature allows you to back up your mnemonic by encrypting it and storing it
 
 When using any of the encryption methods, you will be prompted to enter an encryption key. This key can be provided in text or QR code format. Additionally, you have the option to set a custom ID for easier management of your mnemonics. If a custom ID is not specified, the current loaded wallet fingerprint will be used.
 
-**Note**: The stored encrypted mnemonic is protected only by the key you defined to encrypt it. Also, it is advisable not to rely solely on digital methods for backup. Read the considerations section on [Krux Mnemonics Encryption](../features/encryption/encryption.md/#considerations).
+**Note**: The stored encrypted mnemonic is protected only by the key you defined to encrypt it. Also, it is advisable not to rely solely on digital methods for backup. Read the considerations section on [VaultSeed Mnemonics Encryption](../features/encryption/encryption.md/#considerations).
 
 - **Store on Flash**
 
@@ -120,9 +120,9 @@ A menu will be presented with options to display your master extended public key
 <img src="../../../img/maixpy_m5stickv/extended-public-key-wsh-xpub-text-250.png" class="m5stickv">
 <img src="../../../img/maixpy_m5stickv/extended-public-key-wsh-xpub-qr-250.png" class="m5stickv">
 
-All QR codes will contain [key origin information in key expressions](https://github.com/bitcoin/bips/blob/master/bip-0380.mediawiki#Key_Expressions). If your wallet coordinator cannot parse this information, it will not be able to import the wallet's fingerprint. As a result, Krux will not perform important verifications when signing *PSBT* transactions created by this wallet coordinator, unless you manually add the fingerprint in the coordinator.
+All QR codes will contain [key origin information in key expressions](https://github.com/bitcoin/bips/blob/master/bip-0380.mediawiki#Key_Expressions). If your wallet coordinator cannot parse this information, it will not be able to import the wallet's fingerprint. As a result, VaultSeed will not perform important verifications when signing *PSBT* transactions created by this wallet coordinator, unless you manually add the fingerprint in the coordinator.
 
-Always prefer to import extended public keys directly from Krux when setting up a wallet coordinator instead of copying it (or parts of it) from other sources.
+Always prefer to import extended public keys directly from VaultSeed when setting up a wallet coordinator instead of copying it (or parts of it) from other sources.
 
 Some coordinators are phasing out support for variants like ypub and zpub in favor of xpubs that include key origin data. We therefore recommend using *xpub* only.
 
@@ -154,7 +154,7 @@ When you select the `Wallet Descriptor` option for the first time, you will be p
 
 <div style="clear: both"></div>
 
-**Miniscript Descriptors** present an indented view of the miniscript after the keys. When Taproot is used, Krux checks if the internal key is "provably unspendable", meaning funds can only be moved via Tap tree scripts, in which case the internal key is displayed in a disabled color.
+**Miniscript Descriptors** present an indented view of the miniscript after the keys. When Taproot is used, VaultSeed checks if the internal key is "provably unspendable", meaning funds can only be moved via Tap tree scripts, in which case the internal key is displayed in a disabled color.
 
 <img src="../../../img/maixpy_amigo/wallet-descriptor-tr-minis-1-300.png" class="amigo">
 <img src="../../../img/maixpy_amigo/wallet-descriptor-tr-minis-2-300.png" class="amigo">
@@ -164,7 +164,7 @@ When you select the `Wallet Descriptor` option for the first time, you will be p
 
 Re-access the "Wallet Descriptor" option after loading your wallet to view its name and a QR code containing the originally loaded data. If an SD card is inserted, you can save the descriptor for future use without a coordinator's assistance. Like any QR code, it can be printed after setting up the printer driver.
 
-Krux also allows you to verify a descriptor's receive and change addresses without the need to load private keys. Simply turn on your Krux, access **Tools -> Descriptor Addresses**, and load a trusted descriptor from a QR code or SD card.
+VaultSeed also allows you to verify a descriptor's receive and change addresses without the need to load private keys. Simply turn on your VaultSeed, access **Tools -> Descriptor Addresses**, and load a trusted descriptor from a QR code or SD card.
 
 Please note that if you customize the wallet parameters or restart the device, the descriptor will be unloaded, and you may need to load it again to check addresses.
 
@@ -310,7 +310,7 @@ You can then choose to review the PSBT or proceed with one of two signing option
 <div style="clear: both"></div>
 
 #### Message
-Similar to *PSBTs*, Krux can load, sign, and export signatures for *messages*. This feature allows you to attest not only to the ownership of the *messages* themselves but also to the ownership of Bitcoin addresses and the authorship of documents and files.
+Similar to *PSBTs*, VaultSeed can load, sign, and export signatures for *messages*. This feature allows you to attest not only to the ownership of the *messages* themselves but also to the ownership of Bitcoin addresses and the authorship of documents and files.
 
 - **Standard Messages and Files**
 
@@ -323,7 +323,7 @@ If you confirm, a signature will be generated, and you will see a base64-encoded
 
 Following this, you will see and be allowed to export your raw (master) public key in hexadecimal form, which can be used by others to verify your signature. If a thermal printer is attached, you can also print this QR code.
 
-This feature is used to sign Krux releases, airgapped, using a Krux device.
+This feature is used to sign VaultSeed releases, airgapped, using a VaultSeed device.
 
 <div style="clear: both"></div>
 
@@ -332,6 +332,6 @@ This feature is used to sign Krux releases, airgapped, using a Krux device.
 <img src="../../../img/maixpy_m5stickv/sign-message-at-address-prompt-250.png" align="right" class="m5stickv">
 <img src="../../../img/maixpy_amigo/sign-message-at-address-prompt-300.png" align="right" class="amigo">
 
-Coordinators like Sparrow and Specter offer the possibility to sign *messages* at a Bitcoin receive address, allowing you to attest ownership of that address. Krux will detect if the *message* is of this type and present a similar workflow for signing. The main difference is that the address will be displayed along with the raw *message*, and since the *message* is signed with a derived address instead of the master public key, Krux won't offer the option to export the raw public key after the signature.
+Coordinators like Sparrow and Specter offer the possibility to sign *messages* at a Bitcoin receive address, allowing you to attest ownership of that address. VaultSeed will detect if the *message* is of this type and present a similar workflow for signing. The main difference is that the address will be displayed along with the raw *message*, and since the *message* is signed with a derived address instead of the master public key, VaultSeed won't offer the option to export the raw public key after the signature.
 
 <div style="clear: both"></div>

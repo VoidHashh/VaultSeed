@@ -1473,7 +1473,7 @@ def test_about(mocker, multiple_devices):
 
     login.about()
 
-    title = "selfcustody.github.io/krux"
+    title = "voidhashh.github.io/VaultSeed"
     msg = (
         title
         + "\n"

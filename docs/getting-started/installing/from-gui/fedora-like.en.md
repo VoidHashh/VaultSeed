@@ -1,10 +1,10 @@
 # :material-fedora: Download assets
     
-* [`{{latest_installer_rpm}}`](https://github.com/selfcustody/krux-installer/releases/download/{{latest_installer}}/{{latest_installer_rpm}})
+* [`{{latest_installer_rpm}}`](https://github.com/VoidHashh/VaultSeed/releases/download/{{latest_installer}}/{{latest_installer_rpm}})
 
 ## Install
 
-**Krux-Installer** isn't available on Fedora or RedHat repositories. You'll need to add it manually:
+**VaultSeed Installer** isn't available on Fedora or RedHat repositories. You'll need to add it manually:
 
 ### Fedora
 
@@ -26,3 +26,4 @@ to activate the `sudoless` flash procedure.
 ----8<----
 after-install-installer.en.txt
 ----8<----
+

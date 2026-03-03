@@ -21,7 +21,7 @@
 # THE SOFTWARE.
 
 # This script batch signs firmware releases through air-gapped interaction with
-# a Krux signing device.
+# a VaultSeed signing device.
 # Load a 24 words mnemonic in testnet to sign the firmware hashes as messages.
 
 import os
@@ -50,7 +50,7 @@ def release_folder():
         for line in lines:
             if line.startswith("version"):
                 version = line.split('"')[-2]
-    release_folder_name = "krux-v" + version
+    release_folder_name = "vaultseed-v" + version
     print("Signing firmwares in:", release_folder_name)
     return release_folder_name
 
@@ -137,7 +137,7 @@ for device in DEVICES:
         f.write(binary_signature)
 
 # Verify signatures
-PUBLIC_KEY_FILE = "selfcustody.pem"
+PUBLIC_KEY_FILE = "vaultseed.pem"
 for device in DEVICES:
     file_name = os.path.join(folder, device, "firmware.bin")
     signature_file = os.path.join(folder, device, "firmware.bin.sig")

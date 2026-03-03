@@ -102,10 +102,10 @@ encoder = RotaryEncoder()  # Singleton
 
 
 class EncoderPage(Button):
-    """Encoder class that mimics Krux Page GPIO Button behavior"""
+    """Encoder class that mimics VaultSeed Page GPIO Button behavior"""
 
     def event(self):
-        """Returns encoder events while mimics Krux GPIO Buttons behavior"""
+        """Returns encoder events while mimics VaultSeed GPIO Buttons behavior"""
         if encoder.value > 0:
             encoder.value = 0
             return True
@@ -113,10 +113,10 @@ class EncoderPage(Button):
 
 
 class EncoderPagePrev(Button):
-    """Encoder class that mimics Krux Page_prev GPIO Button behavior"""
+    """Encoder class that mimics VaultSeed Page_prev GPIO Button behavior"""
 
     def event(self):
-        """Returns encoder events while mimics Krux GPIO Buttons behavior"""
+        """Returns encoder events while mimics VaultSeed GPIO Buttons behavior"""
         if encoder.value < 0:
             encoder.value = 0
             return True

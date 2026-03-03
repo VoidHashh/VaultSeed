@@ -10,7 +10,7 @@ def release_folder():
         for line in lines:
             if line.startswith("version"):
                 version = line.split('"')[-2]
-    release_folder_name = "krux-v" + version
+    release_folder_name = "vaultseed-v" + version
     print("Hashing binaries for:", release_folder_name)
     return release_folder_name
 

@@ -1,4 +1,4 @@
-In Krux first menu, there is a `Settings` entry. Some submenu entries have too many options to fit on a single screen, swipe up :material-gesture-swipe-up: or down :material-gesture-swipe-down: to navigate between the screens - if your device has a touchscreen. Below is a breakdown of the options you can change:
+In VaultSeed first menu, there is a `Settings` entry. Some submenu entries have too many options to fit on a single screen, swipe up :material-gesture-swipe-up: or down :material-gesture-swipe-down: to navigate between the screens - if your device has a touchscreen. Below is a breakdown of the options you can change:
 
 <img src="../../img/maixpy_amigo/settings-options-300.png" class="amigo">
 <img src="../../img/maixpy_m5stickv/settings-options-250.png" class="m5stickv">
@@ -37,7 +37,7 @@ As with `Policy Type`, pre-select the most commonly used script type so that you
 <img src="../../img/maixpy_m5stickv/encryption-options-250.png" align="right" class="m5stickv">
 <img src="../../img/maixpy_amigo/encryption-options-300.png" align="right" class="amigo">
 
-Modify the encryption method and parameters to fit your needs. This will be used when storing encrypted mnemonics or creating encrypted QR codes. For more info see [Krux Encryption - Regarding BIP39 Mnemonics](features/encryption/encryption.md/#regarding-bip39-mnemonics).
+Modify the encryption method and parameters to fit your needs. This will be used when storing encrypted mnemonics or creating encrypted QR codes. For more info see [VaultSeed Encryption - Regarding BIP39 Mnemonics](features/encryption/encryption.md/#regarding-bip39-mnemonics).
 
 <div style="clear: both"></div>
 
@@ -105,7 +105,7 @@ You can set up a TTL serial thermal printer or GRBL. It is also possible to stor
 Define several machining parameters according to the desired size, material you'll use, and your CNC characteristics and capabilities. See [CNC Engraving](features/printing/cnc.md) for more details.
 
 #### Thermal
-Printers can come with different baudrates from the manufacturer. By default, Krux assumes the connected printer will have a baudrate of `9600`. If yours is different, you can change it here.
+Printers can come with different baudrates from the manufacturer. By default, VaultSeed assumes the connected printer will have a baudrate of `9600`. If yours is different, you can change it here.
 
 Also setup the TX Pin you'll use (i.e., 35 on M5StickV, 7 on Maix Amigo, 8 on Yahboom, 25 on Cube, 28 on WonderMV) and tweak other parameters according to your printer recommendations. For most printers you will only need to connect 2 cables, the device TX to the printer RX and ground. Current uses of printing are listed [here](features/printing/printing.md). Consult the [parts list](../parts.md/#optional-ttl-serial-thermal-printer) for supported printers.
 
@@ -132,7 +132,7 @@ If your device has touchscreen you can change the touch detection threshold. If 
 <img src="../../img/maixpy_m5stickv/locale-options-250.png" align="right" class="m5stickv">
 <img src="../../img/maixpy_amigo/locale-options-300.png" align="right" class="amigo">
 
-Here you can change Krux to your language.
+Here you can change VaultSeed to your language.
 
 <div style="clear: both"></div>
 
@@ -151,7 +151,7 @@ Choose between `flash` (device's internal memory) or `SD card` for the place whe
 Adjust settings that may impact your security protocols.
 
 #### Shutdown Time
-Set the time it takes for Krux to automatically shut down. This feature not only conserves your device's battery, if it has one, but also serves as an important security measure. If you forget your device with private keys loaded, it will shut down automatically after the set time.
+Set the time it takes for VaultSeed to automatically shut down. This feature not only conserves your device's battery, if it has one, but also serves as an important security measure. If you forget your device with private keys loaded, it will shut down automatically after the set time.
 
 **Note**: Devices without batteries and power management will not shut down but reboot, which will also unload keys.
 
@@ -171,7 +171,7 @@ Activating *TC Flash Hash* at boot helps prevent unauthorized use by requiring t
 <img src="../../img/maixpy_m5stickv/settings-hide-mnemonic-250.png" align="right" class="m5stickv">
 <img src="../../img/maixpy_amigo/settings-hide-mnemonic-300.png" align="right" class="amigo">
 
-When `True`, Krux will disable the [New Mnemonic](./usage/generating-a-mnemonic.md) menu and hide the words when [Loading a Mnemonic](./usage/loading-a-mnemonic.md). It will also hide the words when using [BIP85 to create a BIP39 Mnemonic](./usage/navigating-the-main-menu.md#bip85) and disable the [Backup Mnemonic](./usage/navigating-the-main-menu.md#backup-mnemonic) menu.
+When `True`, VaultSeed will disable the [New Mnemonic](./usage/generating-a-mnemonic.md) menu and hide the words when [Loading a Mnemonic](./usage/loading-a-mnemonic.md). It will also hide the words when using [BIP85 to create a BIP39 Mnemonic](./usage/navigating-the-main-menu.md#bip85) and disable the [Backup Mnemonic](./usage/navigating-the-main-menu.md#backup-mnemonic) menu.
 
 <div style="clear: both"></div>
 
@@ -193,7 +193,7 @@ The *TC Code* will be deleted if the device is wiped or user data is erased, whi
 <img src="../../img/maixpy_m5stickv/settings-options-appearance-250.png" align="right" class="m5stickv">
 <img src="../../img/maixpy_amigo/settings-options-appearance-300.png" align="right" class="amigo">
 
-Configure `screensaver time` and change Krux to your desired `theme`.
+Configure `screensaver time` and change VaultSeed to your desired `theme`.
 
 <div style="clear: both"></div>
 
@@ -206,7 +206,7 @@ Set how long to wait idle before the screensaver appears. Enter 0 to disable the
 <div style="clear: both"></div>
 
 #### Theme
-Choose your color theme according to your preference. Some themes may be more suitable for some devices, coordinator cameras and environments. As an example, it may be easier to scan QR codes from Krux devices using light theme in brighter environments.
+Choose your color theme according to your preference. Some themes may be more suitable for some devices, coordinator cameras and environments. As an example, it may be easier to scan QR codes from VaultSeed devices using light theme in brighter environments.
 
 <img src="../../img/maixpy_amigo/theme-1-300.png" class="amigo">
 <img src="../../img/maixpy_amigo/theme-2-300.png" class="amigo">

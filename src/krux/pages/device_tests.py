@@ -98,7 +98,7 @@ class DeviceTests(Page):
 
     def print_test(self):
         """Handler for the 'Print Test QR' menu item"""
-        title = t("Krux Printer Test QR")
+        title = t("VaultSeed Printer Test QR")
         self.display_qr_codes(title, title=title)
 
         from .utils import Utils

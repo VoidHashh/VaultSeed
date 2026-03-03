@@ -2,10 +2,10 @@ This guide will walk through the basic use of the installer. At startup, it can 
 operational systems. In the rest, the procedures will be similar.
 
 ### Main Menu 
-When executing the **Krux-Installer**, you will be presented with a menu of 4 enabled buttons and
+When executing the **VaultSeed Installer**, you will be presented with a menu of 4 enabled buttons and
 two disabled buttons:
 
-<img width="640" src="../../../../img/krux-installer/main.png" alt="Krux-Installer Main Menu" />
+<img width="640" src="../../../../img/vaultseed-installer/main.png" alt="VaultSeed Installer Main Menu" />
 
 * Enabled buttons:
     * `Version`: select a firmware version;
@@ -27,34 +27,34 @@ two disabled buttons:
         * It will be enabled when user select the device.
 
 #### Kivy Fatal Error - OpenGL
-Our latest version uses Kivy and requires at least OpenGL version 2.0, if you encounter this error, try installing the [OpenCL™, OpenGL®, and Vulkan® Compatibility Pack](https://apps.microsoft.com/detail/9nqpsl29bfff) from Microsoft.
+Our latest version uses Kivy and requires at least OpenGL version 2.0, if you encounter this error, try installing the [OpenCL???, OpenGL??, and Vulkan?? Compatibility Pack](https://apps.microsoft.com/detail/9nqpsl29bfff) from Microsoft.
 
-<img src="../../../../img/krux-installer/opengl-error.jpg" style="width: 37%; min-width: 250px;">
+<img src="../../../../img/vaultseed-installer/opengl-error.jpg" style="width: 37%; min-width: 250px;">
 
 ### Select version
 
-At startup, the application will setup it to the latest one, `{{latest_krux}}`. But you can select
+At startup, the application will setup it to the latest one, `{{latest_vaultseed}}`. But you can select
 even a beta release or older versions:
     
-<img width="640" src="../../../../img/krux-installer/select_version_menu.png" alt="Krux-Installer Select Version Menu" />
+<img width="640" src="../../../../img/vaultseed-installer/select_version_menu.png" alt="VaultSeed Installer Select Version Menu" />
 
-* Click in the button that show the text `Version: {{latest_krux}}`;
+* Click in the button that show the text `Version: {{latest_vaultseed}}`;
 
-* To select a beta release, click on button that show the text `odudex/krux_binaries`;
+* To select a beta release, click on button that show the text `VoidHashh/VaultSeed/releases`;
 
 * To select an older version, click on button that show the text `Old versions`;
 
 #### Beta release
 
-After choose `odudex/krux_binaries`, you'll be warned with a message:
+After choose `VoidHashh/VaultSeed/releases`, you'll be warned with a message:
 
-<img width="640" src=" ../../../../img/krux-installer/warn_beta.png" alt="Krux-Installer warning beta version" />
+<img width="640" src=" ../../../../img/vaultseed-installer/warn_beta.png" alt="VaultSeed Installer warning beta version" />
 
 #### Older versions
 
 * We put this option in case you have any interest in the history of firmware development;
 
-<img width="640" src=" ../../../../img/krux-installer/select_old_version_menu.png" alt="Krux-Installer Select Old Version Menu" />
+<img width="640" src=" ../../../../img/vaultseed-installer/select_old_version_menu.png" alt="VaultSeed Installer Select Old Version Menu" />
 
 * Each version supports one device or the other;
 
@@ -63,17 +63,17 @@ After choose `odudex/krux_binaries`, you'll be warned with a message:
 
 ### Settings
 
-**Krux-Installer** will give to you some freedom of choices for:
+**VaultSeed Installer** will give to you some freedom of choices for:
 
-* Krux-Installer settings;
+* VaultSeed Installer settings;
 
 * General settings;
 
-#### Krux-Installer specific settings
+#### VaultSeed Installer specific settings
 
 Here you can configure some of the specifics of krux firmare, like:
 
-<img width="640" src=" ../../../../img/krux-installer/app_settings.png" alt="Krux-Installer App settings Menu" />
+<img width="640" src=" ../../../../img/vaultseed-installer/app_settings.png" alt="VaultSeed Installer App settings Menu" />
 
 * Where you'll save downloaded assets;
 
@@ -84,16 +84,16 @@ Here you can configure some of the specifics of krux firmare, like:
 ##### Flash baudrate
 The flash baudrate is how quickly the firmware will be written to the device.
 
-<img width="640" src=" ../../../../img/krux-installer/baudrate.png" alt="Krux-Installer baudrate" />
+<img width="640" src=" ../../../../img/vaultseed-installer/baudrate.png" alt="VaultSeed Installer baudrate" />
 
 Use one of the following (m5StickV doesn't support 2000000): 9600, 19200, 28800, 38400, 57600, 76800, 115200,
 230400, 460800, 576000, 921600, 1500000, 2000000.
 
 ##### System locale
 
-At startup, **Krux-Installer** recognize the locale used in your system. If your language isn't supported, it will defaults to `en_US`.
+At startup, **VaultSeed Installer** recognize the locale used in your system. If your language isn't supported, it will defaults to `en_US`.
 
-<img width="640" src=" ../../../../img/krux-installer/locale_menu.png" alt="Krux-Installer locale menu" />
+<img width="640" src=" ../../../../img/vaultseed-installer/locale_menu.png" alt="VaultSeed Installer locale menu" />
 
 
 ### Select Device
@@ -104,7 +104,7 @@ on which the firmware will be written.
 
 First, select the device we want to flash. After that the menu will shown three items:
 
-<img width="640" src=" ../../../../img/krux-installer/select_device.png" alt="Select Device Menu" />
+<img width="640" src=" ../../../../img/vaultseed-installer/select_device.png" alt="Select Device Menu" />
 
 Note that some devices may be disabled if they are not supported by the chosen version
 
@@ -141,11 +141,11 @@ Once you choose the device and version, it enables the "flash device" button. It
 If you already downloaded assets, you'll be warned about this and will be offered the possibility
 to download again or continue without downloading:
 
-<img width="640" src=" ../../../../img/krux-installer/warn_already_downloaded.png" alt="Krux-Installer already downloaded" />
+<img width="640" src=" ../../../../img/vaultseed-installer/warn_already_downloaded.png" alt="VaultSeed Installer already downloaded" />
 
 #### Download
 
-**Krux-Installer** download can download four assets for official releases or one for beta releases.
+**VaultSeed Installer** download can download four assets for official releases or one for beta releases.
 
 ##### Official releases
 
@@ -155,9 +155,9 @@ to download again or continue without downloading:
 
 * Download a `zip.sig` file containing a `zip`'s digital signature;
     
-* Download the `selfcustody.pem` file containing a public key certificate, signed by `odudex`;
+* Download the `vaultseed.pem` file containing a public key certificate, signed by the VaultSeed maintainer;
 
-<img width="640" src=" ../../../../img/krux-installer/download_assets.png" alt="Krux-Installer downloading assets" />
+<img width="640" src=" ../../../../img/vaultseed-installer/download_assets.png" alt="VaultSeed Installer downloading assets" />
 
 ##### Beta releases
 
@@ -167,17 +167,17 @@ to download again or continue without downloading:
 
 * Integrity verification compares the computed hash of `zip` against thei provided `zip.sha256.txt`;
 
-* Authenticity verification check if the `zip` file was really signed by `odudex`, using
-the `zip.sig` and `selfcustody.pem`.
+* Authenticity verification check if the `zip` file was really signed by the VaultSeed maintainer, using
+the `zip.sig` and `vaultseed.pem`.
 
-<img width="640" src=" ../../../../img/krux-installer/verification.png" alt="Krux-Installer verification process" />
+<img width="640" src=" ../../../../img/vaultseed-installer/verification.png" alt="VaultSeed Installer verification process" />
 
 
 #### Unzip
 
 Now you will be able to select if you do a flash process or need to do an airgap process:
 
-<img width="640" src=" ../../../../img/krux-installer/unzip.png" alt="Krux-Installer unzip" />
+<img width="640" src=" ../../../../img/vaultseed-installer/unzip.png" alt="VaultSeed Installer unzip" />
 
 Click on [Flash with](#flash-with) to install via USB or [Air-gapped update with](#air-gapped-update-with) to perform upgrades via an SD card.
 
@@ -186,46 +186,46 @@ Click on [Flash with](#flash-with) to install via USB or [Air-gapped update with
 When flash starts, it will warn you to **not disconnect the device until the process is complete**.
 You'll be able to see the flash progress:
 
-<img width="640" src=" ../../../../img/krux-installer/flash.png" alt="Krux-Installer unzip" />
-> ⚠️  TIP: You must connect and turn on your device **before click extract and flashing starts!**.
+<img width="640" src=" ../../../../img/vaultseed-installer/flash.png" alt="VaultSeed Installer unzip" />
+> ??????  TIP: You must connect and turn on your device **before click extract and flashing starts!**.
 
 As well a done icon:
 
-<img width="640" src=" ../../../../img/krux-installer/flash_done.png" alt="Krux-Installer unzip" />
+<img width="640" src=" ../../../../img/vaultseed-installer/flash_done.png" alt="VaultSeed Installer unzip" />
 
-> ⚠️  TIP:
+> ??????  TIP:
 ----8<----
-flash-krux-logo.en.txt
+flash-vaultseed-logo.en.txt
 ----8<----
 
 
 ##### Error flashing
 
-If **Krux-Installer** shows a **flash failed** error or freezes at **PLEASE DO NOT UNPLUG YOUR DEVICE** with the message **INFO Trying to Enter K210 ROM ISP Mode…**, it means the installer couldn’t establish a proper connection to the device. See the [troubleshooting](/krux/troubleshooting/#error-when-flashing) section for guidance on how to fix this.
+If **VaultSeed Installer** shows a **flash failed** error or freezes at **PLEASE DO NOT UNPLUG YOUR DEVICE** with the message **INFO Trying to Enter K210 ROM ISP Mode???**, it means the installer couldn???t establish a proper connection to the device. See the [troubleshooting](/VaultSeed/troubleshooting/#error-when-flashing) section for guidance on how to fix this.
 
 
 #### Air-gapped update with
 
 Once you've installed the initial firmware on your device via USB, you can perform further firmware upgrades via SD card to keep the device airgapped.
 
-<img width="640" src=" ../../../../img/krux-installer/unzip.png" alt="Krux-Installer unzip" />
-> ⚠️ Click on "Air-gapped update with"
+<img width="640" src=" ../../../../img/vaultseed-installer/unzip.png" alt="VaultSeed Installer unzip" />
+> ?????? Click on "Air-gapped update with"
 
 Once the `firmware.bin` and `firmware.bin.sig` are extracted, you'll see a warning message.
 
-<img width="640" src=" ../../../../img/krux-installer/warn_airgap.png" alt="Krux-Installer warn airgap" />
+<img width="640" src=" ../../../../img/vaultseed-installer/warn_airgap.png" alt="VaultSeed Installer warn airgap" />
 
 Insert the SD card and click 'Proceed' to allow the installer to detect it.
 
-<img width="640" src=" ../../../../img/krux-installer/list_drivers.png" alt="Krux-Installer warn airgap" />
-> ⚠️ If a single SD card is inserted, the screen will display a large button. If multiple removable drives are detected, both SD cards and other drives will be listed.
+<img width="640" src=" ../../../../img/vaultseed-installer/list_drivers.png" alt="VaultSeed Installer warn airgap" />
+> ?????? If a single SD card is inserted, the screen will display a large button. If multiple removable drives are detected, both SD cards and other drives will be listed.
 
-Select the desired removable drive to copy both `firmware.bin` and `firmware.bin.sig.` The first is the Krux firmware, and the second is a signature file that verifies the firmware’s integrity and authenticity. 
+Select the desired removable drive to copy both `firmware.bin` and `firmware.bin.sig.` The first is the VaultSeed firmware, and the second is a signature file that verifies the firmware???s integrity and authenticity. 
 
 Now you can compare the firmware's hash computed by installer with  the firmware's hash computed by the device. 
 
-<img width="640" src=" ../../../../img/krux-installer/airgap_done.png" alt="Krux-Installer warn airgap" />
-> ⚠️ Once files are copied, remove the SD card from computer, connect to device and compare the hashes
+<img width="640" src=" ../../../../img/vaultseed-installer/airgap_done.png" alt="VaultSeed Installer warn airgap" />
+> ?????? Once files are copied, remove the SD card from computer, connect to device and compare the hashes
 
 ### Wipe device
 
@@ -235,18 +235,20 @@ This is a two step process, **Warning msg** and **Wipe process**.
 
 Before the wipe starts, it will show to you a message:
 
-<img width="640" src=" ../../../../img/krux-installer/wipe_warn.png" alt="Wipe Warning" />
-> ⚠️  TIP: It's useful when your device is not working or for security reasons.
-To use Krux again, you'll need to re-flash the firmware.
+<img width="640" src=" ../../../../img/vaultseed-installer/wipe_warn.png" alt="Wipe Warning" />
+> ??????  TIP: It's useful when your device is not working or for security reasons.
+To use VaultSeed again, you'll need to re-flash the firmware.
 
 #### Wipe
 
 Once the process starts, the screen will appear frozen and a spinner will keep moving.
 When it's done, you can scroll down you will see a `check` icon.
 
-<img width="640" src=" ../../../../img/krux-installer/wipe.png" alt="Wipe Warning" />
-> ⚠️  TIP: Do not unplug or poweroff your device or computer. Wait until the process finishes.
+<img width="640" src=" ../../../../img/vaultseed-installer/wipe.png" alt="Wipe Warning" />
+> ??????  TIP: Do not unplug or poweroff your device or computer. Wait until the process finishes.
 
 ----8<----
 tips-after-install.en.txt
 ----8<----
+
+

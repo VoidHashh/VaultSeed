@@ -1,5 +1,5 @@
 ---
-name: 🐞 Bug report
+name: ???? Bug report
 about: Create a new report
 title: "[Bug] the summary of your report"
 labels: bug
@@ -20,5 +20,7 @@ assignees: ''
 - [ ] WonderMV
 
 **Version affected**
-- [ ] Official release (selfcustody/krux): vXX.YY.Z <!-- Specify the version! -->
-- [ ] Beta release (odudex/krux_binaries): vXX.YY.Z-betaWW <!-- Specify the version! -->
+- [ ] Official release (VoidHashh/VaultSeed): vXX.YY.Z <!-- Specify the version! -->
+- [ ] Beta release (VoidHashh/VaultSeed): vXX.YY.Z-betaWW <!-- Specify the version! -->
+
+

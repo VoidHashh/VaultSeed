@@ -74,14 +74,14 @@ if [ "$1" == "build" ]; then
             declare $(grep -m 1 version pyproject.toml | sed 's/ *= */=/g' | sed 's/"//g' | sed 's/\r//g')
             sed -i -- 's/VERSION = ".*"/VERSION = "'"$version"'"/g' src/krux/metadata.py
             
-            # docs: latest_krux version
-            sed -i -- 's/  latest_krux: krux-v.*/  latest_krux: krux-v'$version'/g' mkdocs.yml
+            # docs: latest_vaultseed version
+            sed -i -- 's/  latest_vaultseed: vaultseed-v.*/  latest_vaultseed: vaultseed-v'$version'/g' mkdocs.yml
 
             mkdir -p build
-            docker build . -t krux-builder --build-arg DEVICE=$device
+            docker build . -t vaultseed-builder --build-arg DEVICE=$device
 
             # Create a container to extract the built firmware
-            docker create --name extract-firmware krux-builder
+            docker create --name extract-firmware vaultseed-builder
             docker cp extract-firmware:$BUILD_DIR/firmware.bin build/firmware.bin
             docker cp extract-firmware:$BUILD_DIR/kboot.kfpkg build/kboot.kfpkg
             docker rm extract-firmware
@@ -144,7 +144,7 @@ elif [ "$1" == "flash" -o "$1" == "boot" -o "$1" == "boot-terminal" -o "$1" == "
             BOARD="goE"
         fi
 
-        DOCK_CMD="docker run --device=/dev/$usb_device_name:/dev/ttyUSB0 --rm -w $BUILD_DIR -it krux-builder /kruxenv/bin/python ktool.py -B $BOARD -p /dev/ttyUSB0 -b $BAUDRATE $CMD_SUFFIX"
+        DOCK_CMD="docker run --device=/dev/$usb_device_name:/dev/ttyUSB0 --rm -w $BUILD_DIR -it vaultseed-builder /kruxenv/bin/python ktool.py -B $BOARD -p /dev/ttyUSB0 -b $BAUDRATE $CMD_SUFFIX"
         if ! $DOCK_CMD ; then
             # M5stickV has only one serial port
             # Bit has two serial ports and uses first for flash
@@ -156,7 +156,7 @@ elif [ "$1" == "flash" -o "$1" == "boot" -o "$1" == "boot-terminal" -o "$1" == "
                     panic "Failed to find device via USB. Is it connected and powered on?"
                 fi
                 echo "Trying second USB device: $usb_device_name"
-                DOCK_CMD="docker run --device=/dev/$usb_device_name:/dev/ttyUSB1 --rm -w $BUILD_DIR -it krux-builder /kruxenv/bin/python ktool.py -B $BOARD -p /dev/ttyUSB1 -b $BAUDRATE $CMD_SUFFIX"
+                DOCK_CMD="docker run --device=/dev/$usb_device_name:/dev/ttyUSB1 --rm -w $BUILD_DIR -it vaultseed-builder /kruxenv/bin/python ktool.py -B $BOARD -p /dev/ttyUSB1 -b $BAUDRATE $CMD_SUFFIX"
                 if ! $DOCK_CMD ; then
                     panic "Failed to flash device via USB. Is it connected and powered on?"
                 fi
@@ -256,25 +256,26 @@ elif [ "$1" == "verify" ]; then
     fi
 elif [ "$1" == "build-release" ]; then
     declare $(grep -m 1 version pyproject.toml | sed 's/ *= */=/g' | sed 's/"//g')
+    KTOOL_RELEASE_BASE_URL="${KTOOL_RELEASE_BASE_URL:-https://github.com/VoidHashh/VaultSeed/releases/download/ktool-v0.1.1}"
 
-    release_dir="krux-v$version"
+    release_dir="vaultseed-v$version"
     mkdir -p $release_dir
 
     cd build
     if [ ! -f "ktool-linux" ]; then
-        wget https://github.com/selfcustody/ktool/releases/download/v0.1.1/ktool-linux
+        wget "$KTOOL_RELEASE_BASE_URL/ktool-linux"
         echo "2b8be0c95abe9f0ff7016e9a5b343ff8d3df9751783bc4d6a4b4df775693fb57  ktool-linux" | sha256sum -c
     fi
     if [ ! -f "ktool-mac" ]; then
-        wget https://github.com/selfcustody/ktool/releases/download/v0.1.1/ktool-mac
+        wget "$KTOOL_RELEASE_BASE_URL/ktool-mac"
         echo "008bbcfb81da7921510c73e09b46771677d013dc5d148de4d2205b901a2cc892  ktool-mac" | sha256sum -c
     fi
     if [ ! -f "ktool-mac-10" ]; then
-        wget https://github.com/selfcustody/ktool/releases/download/v0.1.1/ktool-mac-10
+        wget "$KTOOL_RELEASE_BASE_URL/ktool-mac-10"
         echo "fc386abbde4a1b1b35f8ffad2df429786a737756063f137f69f0e080b190cb4c  ktool-mac-10" | sha256sum -c
     fi
     if [ ! -f "ktool-win.exe" ]; then
-        wget https://github.com/selfcustody/ktool/releases/download/v0.1.1/ktool-win.exe
+        wget "$KTOOL_RELEASE_BASE_URL/ktool-win.exe"
         echo "5fca13023de5bfbf349bc898e046b4858217644bf60381b2af5c2649d9384c39  ktool-win.exe" | sha256sum -c
     fi
     cp -f ktool-linux ../$release_dir/ktool-linux

@@ -164,7 +164,7 @@ translation_array = [
     "KEF criptografado",
     "Chave",
     "A chave não foi fornecida",
-    "Teste de impressão QR Krux",
+    "Teste de impressão QR VaultSeed",
     "Tipo de LCD",
     "Idioma",
     "Deixe em branco se quiser que seja escolhida uma palavra final válida",

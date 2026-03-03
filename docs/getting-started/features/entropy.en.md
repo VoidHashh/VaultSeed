@@ -1,6 +1,6 @@
 
-## Why Does Krux Say the Entropy of My Fifty Dice Rolls Does Not Contain 128 Bits of Entropy?
-We want Krux to help users understand the concepts involved in the process, present statistics and indicators, and encourage users to experiment and evaluate results. This way, users learn about best practices in key generation. Below, we delve deeper into the concepts of entropy to better support users' knowledge of sovereign self-custody.
+## Why Does VaultSeed Say the Entropy of My Fifty Dice Rolls Does Not Contain 128 Bits of Entropy?
+We want VaultSeed to help users understand the concepts involved in the process, present statistics and indicators, and encourage users to experiment and evaluate results. This way, users learn about best practices in key generation. Below, we delve deeper into the concepts of entropy to better support users' knowledge of sovereign self-custody.
 
 ## Entropy in Dice Rolls
 
@@ -184,14 +184,14 @@ Cryptographic entropy, on the other hand, requires a higher standard of unpredic
 
 It is possible to have dice rolls with an even distribution but poor cryptographic entropy. This issue arises when patterns are present in the sequences. Examples include sequences like `123456123456123...`, `111122223333...`, and `654321654321...`, which exhibit poor cryptographic entropy despite having even distribution and high Shannon's entropy.
 
-To mitigate this issue, Krux has implemented a pattern detection algorithm that evaluates the Shannon's entropy of the rolls' derivatives. In practice, this algorithm detects arithmetic progression components in the dice rolls and raises a warning if a certain threshold is crossed.
+To mitigate this issue, VaultSeed has implemented a pattern detection algorithm that evaluates the Shannon's entropy of the rolls' derivatives. In practice, this algorithm detects arithmetic progression components in the dice rolls and raises a warning if a certain threshold is crossed.
 
-## What Krux Does?
+## What VaultSeed Does?
 
-- Krux requires a minimum number of rolls based on theoretical entropy.
-- Krux warns the user if low Shannon's entropy, calculated with the actual rolls, is detected.
-- Krux warns the user if it suspects there are patterns within the actual rolls.
+- VaultSeed requires a minimum number of rolls based on theoretical entropy.
+- VaultSeed warns the user if low Shannon's entropy, calculated with the actual rolls, is detected.
+- VaultSeed warns the user if it suspects there are patterns within the actual rolls.
 
 ## Conclusion
 
-While Krux cannot ensure rolls have good or bad cryptographic entropy, it does provide indicators to help users detect issues and learn about the concepts involved in mnemonic generation.
+While VaultSeed cannot ensure rolls have good or bad cryptographic entropy, it does provide indicators to help users detect issues and learn about the concepts involved in mnemonic generation.

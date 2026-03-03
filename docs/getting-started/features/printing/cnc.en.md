@@ -4,7 +4,7 @@ warning-printer.en.txt
 ----8<----
 
 
-Krux engraves any QR code (SeedQR, PSBT, address, XPUB, etc.) on GRBL 1.1 CNC machines — via airgapped SD card or direct TTL serial connection.
+VaultSeed engraves any QR code (SeedQR, PSBT, address, XPUB, etc.) on GRBL 1.1 CNC machines — via airgapped SD card or direct TTL serial connection.
 
 <img src="../../../../img/maixpy_amigo/print-qr-printing-300.png" class="amigo">
 <img src="../../../../img/maixpy_m5stickv/print-qr-printing-250.png" class="m5stickv">

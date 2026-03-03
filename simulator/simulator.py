@@ -148,7 +148,7 @@ screen = pg.display.set_mode(devices.WINDOW_SIZES[args.device], pg.SCALED, 32)
 screen.fill(lcd.COLOR_BLACK)
 buffer_image = screen.copy().convert()
 
-pg.display.set_caption("Krux Simulator")
+pg.display.set_caption("VaultSeed Simulator")
 
 device_image = devices.load_image(args.device)
 

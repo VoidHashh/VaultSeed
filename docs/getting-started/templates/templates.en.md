@@ -117,19 +117,19 @@ SVG: [Dots](../QR/svg/qr_v5_dots_regions.svg), [Lines](../QR/svg/qr_v5_lines_reg
 
 <div style="clear: both"></div>
 
-<a href="../Krux_Binary_Grid_double_rev1.png">
-  <img src="../Krux_Binary_Grid_double_rev1.png" alt="Tinyseed Scan Background" style="width: 30%; float: left; margin-left: 10px;">
+<a href="../VaultSeed_Binary_Grid_double_rev1.png">
+  <img src="../VaultSeed_Binary_Grid_double_rev1.png" alt="Tinyseed Scan Background" style="width: 30%; float: left; margin-left: 10px;">
 </a>
 
-<a href="../Krux_Binary_Grid_double_clean_rev1.png">
-  <img src="../Krux_Binary_Grid_double_clean_rev1.png" alt="Tinyseed Scan Background" style="width: 30%; float: left; margin-left: 10px;">
+<a href="../VaultSeed_Binary_Grid_double_clean_rev1.png">
+  <img src="../VaultSeed_Binary_Grid_double_clean_rev1.png" alt="Tinyseed Scan Background" style="width: 30%; float: left; margin-left: 10px;">
 </a>
 
 <div style="clear: both"></div>
 
-[Binary Grid svg source](Krux_Binary_Grid_double_rev1.svg)
+[Binary Grid svg source](VaultSeed_Binary_Grid_double_rev1.svg)
 
-[Binary Grid Clean svg source](Krux_Binary_Grid_double_clean_rev1.svg)
+[Binary Grid Clean svg source](VaultSeed_Binary_Grid_double_clean_rev1.svg)
 
 ## Edit Templates
 To edit the source file (.svg) it is recommended to use Inkscape and set it to use mm unit. "Unscaled models" from QR code templates have the 21x21 or 25x25mm size for 12 or 24 respectively, this way making them easier to edit.

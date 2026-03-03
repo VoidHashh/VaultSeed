@@ -43,7 +43,7 @@ class Touch:
 
     def __init__(self, width, height, irq_pin=None, res_pin=None):
         """Touch API init - width and height are in Landscape mode
-        For Krux width = max_y, height = max_x
+        For VaultSeed width = max_y, height = max_x
         """
         self.sample_time = 0
         self.y_regions = []

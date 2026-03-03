@@ -167,7 +167,7 @@ translation_array = [
     "Test de impresión QR",
     "Tipo de LCD",
     "Idioma",
-    "Déjalo en blanco si quieres que Krux elija una última palabra válida",
+    "Déjalo en blanco si quieres que VaultSeed elija una última palabra válida",
     "Izquierda",
     "Longitud:",
     "Retraso de Línea",

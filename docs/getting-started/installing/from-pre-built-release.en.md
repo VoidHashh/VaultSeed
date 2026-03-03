@@ -1,26 +1,26 @@
-This page explains how to download and install Krux firmware from our official, pre-built latest release.
+This page explains how to download and install VaultSeed firmware from our official, pre-built latest release.
 
-[<img src="../../../img/badge_github.png" width="186">](https://github.com/selfcustody/krux/releases)
+[<img src="../../../img/badge_github.png" width="186">](https://github.com/VoidHashh/VaultSeed/releases)
 
 ### Verify the files
 Before installing the release, it's a good idea to check that:
 
-1. The *SHA256 hash* of `{{latest_krux}}.zip` matches the hash in `{{latest_krux}}.zip.sha256.txt`
-2. The *signature file* `{{latest_krux}}.zip.sig` can be verified with the [`selfcustody.pem` public key](https://github.com/selfcustody/krux/blob/main/selfcustody.pem) found in the root of the krux repository.
+1. The *SHA256 hash* of `{{latest_vaultseed}}.zip` matches the hash in `{{latest_vaultseed}}.zip.sha256.txt`
+2. The *signature file* `{{latest_vaultseed}}.zip.sig` can be verified with the [`vaultseed.pem` public key](https://github.com/VoidHashh/VaultSeed/blob/main/vaultseed.pem) found in the root of the VaultSeed repository.
 
 You can either do this manually or with the `krux` shell script, which contains helper commands for this:
 ```bash
 ### Using krux script ###
 # Hash checksum
-./krux sha256 {{latest_krux}}.zip
+./krux sha256 {{latest_vaultseed}}.zip
 # Signature
-./krux verify {{latest_krux}}.zip selfcustody.pem
+./krux verify {{latest_vaultseed}}.zip vaultseed.pem
 
 ### Manually ###
 # Hash checksum
-sha256sum {{latest_krux}}.zip.sha256.txt -c
+sha256sum {{latest_vaultseed}}.zip.sha256.txt -c
 #Signature
-openssl sha256 <{{latest_krux}}.zip -binary | openssl pkeyutl -verify -pubin -inkey selfcustody.pem -sigfile {{latest_krux}}.zip.sig
+openssl sha256 <{{latest_vaultseed}}.zip -binary | openssl pkeyutl -verify -pubin -inkey vaultseed.pem -sigfile {{latest_vaultseed}}.zip.sig
 ```
 
 On Mac you may need to install `coreutils` to be able to use `sha256sum`
@@ -28,15 +28,15 @@ On Mac you may need to install `coreutils` to be able to use `sha256sum`
 brew install coreutils
 ```
 
-Fun fact: Each new Krux release is signed with Krux!
+Fun fact: Each new VaultSeed release is signed with VaultSeed!
 
 ### Flash the firmware onto the device
-Extract the latest version of Krux you downloaded and enter the folder:
+Extract the latest version of VaultSeed you downloaded and enter the folder:
 ```bash
-unzip {{latest_krux}}.zip && cd {{latest_krux}}
+unzip {{latest_vaultseed}}.zip && cd {{latest_vaultseed}}
 ```
 
-Connect the device to your computer via USB (for Maix Amigo, make sure you’re using bottom port), power it on, and run the following, replacing `DEVICE` with either `m5stickv`, `amigo`, `cube` or `yahboom` (to Yahboom you may need to manually specify the port, for example `/dev/ttyUSB0` on Linux or `COM6` on Windows):
+Connect the device to your computer via USB (for Maix Amigo, make sure you???re using bottom port), power it on, and run the following, replacing `DEVICE` with either `m5stickv`, `amigo`, `cube` or `yahboom` (to Yahboom you may need to manually specify the port, for example `/dev/ttyUSB0` on Linux or `COM6` on Windows):
 ```bash
 ./ktool -B goE -b 1500000 maixpy_DEVICE/kboot.kfpkg
 ```
@@ -47,7 +47,7 @@ For `dock`, `wonder_mv` or `tzt` use the `-B dan` parameter:
 ```
 
 ----8<----
-flash-krux-logo.en.txt
+flash-vaultseed-logo.en.txt
 ----8<----
 
 ----8<----
@@ -89,3 +89,6 @@ Different OS versions may have different port names, and the absence of ports ma
 ----8<----
 tips-after-install.en.txt
 ----8<----
+
+
+

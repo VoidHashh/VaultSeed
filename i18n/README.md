@@ -45,7 +45,7 @@ plugins:
       en: English
       lo:
         name: Lorem ipsum
-        site_name: Krux - Adipiscing enim eu turpis egestas pretium aenean pharetra.
+        site_name: VaultSeed - Adipiscing enim eu turpis egestas pretium aenean pharetra.
 ```
 
 Now, you will add the following `lo` entries to `plugins.i18n.nav_translations` in [mkdocs.yml](../mkdocs.yml). These entries are the equivalent of those shown in the menus.
@@ -133,7 +133,7 @@ hide:
   - navigation
   - toc
 ---
-# Krux
+# VaultSeed
 <img srcset="img/logo-150.png" align="right">
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae congue mauris rhoncus aenean vel. Ridiculus mus mauris vitae ultricies leo integer. Mi ipsum faucibus vitae aliquet nec.
@@ -162,8 +162,8 @@ INFO     -  Building lo documentation
 WARNING  -  Language lo is not supported by mkdocs-material==8.3.9, not setting the 'theme.language' option
 INFO     -  Documentation built in 1.30 seconds
 INFO     -  [21:05:37] Watching paths for changes: 'docs', 'mkdocs.yml'
-INFO     -  [21:05:37] Serving on http://127.0.0.1:8000/krux/
-INFO     -  [21:05:40] Browser connected: http://localhost:8000/krux/lo/
+INFO     -  [21:05:37] Serving on http://127.0.0.1:8000/VaultSeed/
+INFO     -  [21:05:40] Browser connected: http://localhost:8000/VaultSeed/lo/
 ```
 
 And you will see an icon next to the search field where you can select your translation:

@@ -1,9 +1,9 @@
-This page explains how to install Krux from source. You can check a simplified version of these instructions in our [README](https://github.com/selfcustody/krux) too.
+This page explains how to install VaultSeed from source. You can check a simplified version of these instructions in our [README](https://github.com/VoidHashh/VaultSeed) too.
 
 ### Fetch the code
-This will download the source code of Krux as well as the code of all its dependencies inside a new folder called `krux` (needs [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)):
+This will download the source code of VaultSeed as well as the code of all its dependencies inside a new folder called `krux` (needs [`git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)):
 ```bash
-git clone --recurse-submodules https://github.com/selfcustody/krux
+git clone --recurse-submodules https://github.com/VoidHashh/VaultSeed
 ```
 
 **Note**: When you wish to pull updates (to all submodules, their submodules, ...) to this repo, use:
@@ -14,9 +14,9 @@ git pull origin main && git submodule update --init --recursive
 #### Prerequisite for upgrading via microSD
 If you wish to perform airgapped upgrades via microSD card later, you will need to have a private and public key pair to sign your builds and verify the signatures. If you do not want to perform further airgapped upgrades, jump to [build section](#build-the-firmware-linux-or-wsl).
 
-You can use an existing Krux installation and mnemonic to sign your builds with, **or** you can generate a keypair and sign from the [`openssl` CLI](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations). Commands have been added to the `krux` shell script to make this easier.
+You can use an existing VaultSeed installation and mnemonic to sign your builds with, **or** you can generate a keypair and sign from the [`openssl` CLI](https://wiki.openssl.org/index.php/Command_Line_Elliptic_Curve_Operations). Commands have been added to the `krux` shell script to make this easier.
 
-In either case, you will need to update the `SIGNER_PUBKEY` field in `src/krux/metadata.py` to store your public key so that Krux can verify future builds before installing.
+In either case, you will need to update the `SIGNER_PUBKEY` field in `src/krux/metadata.py` to store your public key so that VaultSeed can verify future builds before installing.
 
 To generate a keypair:
 ```bash
@@ -24,12 +24,12 @@ To generate a keypair:
 ./krux pem-to-pubkey pubkey.pem
 ```
 
-The first command will create `privkey.pem` and `pubkey.pem` files you can use with openssl, and the second command will output your public key in the form expected by Krux.
+The first command will create `privkey.pem` and `pubkey.pem` files you can use with openssl, and the second command will output your public key in the form expected by VaultSeed.
 
 Once you've updated the `SIGNER_PUBKEY` with this value, you can proceed with the regular build process.
 
 ### Build the firmware (Linux or WSL)
-The [krux bash script](https://github.com/selfcustody/krux/blob/main/krux) contains commands for common development tasks. It assumes a Linux host, you will need to have [Docker Desktop or Docker Engine](https://docs.docker.com/desktop/), `openssl`, and `wget` installed at a minimum for the commands to work as expected. It works on Windows using WSL. The channel Crypto Guide from Youtube made a step-by-step video - [Krux DIY Bitcoin Signer: Build From Source & Verify (With Windows + WSL2 + Docker)](https://www.youtube.com/watch?v=Vmr_TFy2TfQ)
+The [krux bash script](https://github.com/VoidHashh/VaultSeed/blob/main/krux) contains commands for common development tasks. It assumes a Linux host, you will need to have [Docker Desktop or Docker Engine](https://docs.docker.com/desktop/), `openssl`, and `wget` installed at a minimum for the commands to work as expected. It works on Windows using WSL. The channel Crypto Guide from Youtube made a step-by-step video - [VaultSeed DIY Bitcoin Signer: Build From Source & Verify (With Windows + WSL2 + Docker)](https://www.youtube.com/watch?v=Vmr_TFy2TfQ)
 
 To build and flash the firmware:
 ```bash
@@ -54,8 +54,8 @@ If you build from the `main` branch of the source code, you should be able to re
 
 To check, use the compiled files for the target device. Each command should output the same hash for the two provided files:
 ```bash
-sha256sum build/firmware.bin {{latest_krux}}/maixpy_DEVICE/firmware.bin
-sha256sum build/kboot.kfpkg {{latest_krux}}/maixpy_DEVICE/kboot.kfpkg
+sha256sum build/firmware.bin {{latest_vaultseed}}/maixpy_DEVICE/firmware.bin
+sha256sum build/kboot.kfpkg {{latest_vaultseed}}/maixpy_DEVICE/kboot.kfpkg
 ```
 
 If you want to extract and verify the `firmware.bin`file contained in `kboot.kfpkg`, use the following:
@@ -65,7 +65,7 @@ unzip kboot.kfpkg -d ./kboot/
 ```
 
 ### Flash the firmware onto the device
-Connect the device to your computer via USB (for Maix Amigo, make sure you’re using bottom port), power it on, and run the following, replacing `DEVICE` with either `m5stickv`, `amigo`, `cube`, `dock`, `yahboom`, `wonder_mv` or `tzt`:
+Connect the device to your computer via USB (for Maix Amigo, make sure youâ€™re using bottom port), power it on, and run the following, replacing `DEVICE` with either `m5stickv`, `amigo`, `cube`, `dock`, `yahboom`, `wonder_mv` or `tzt`:
 ```bash
 # flash firmware to DEVICE
 ./krux flash maixpy_DEVICE
@@ -73,7 +73,7 @@ Connect the device to your computer via USB (for Maix Amigo, make sure you’re 
 If flashing fails try reading [Troubleshooting](../../troubleshooting.md)
 
 ----8<----
-flash-krux-logo.en.txt
+flash-vaultseed-logo.en.txt
 ----8<----
 
 ----8<----
@@ -83,7 +83,7 @@ amigo-more-info-faq.en.txt
 ### Signing the firmware
 You can sign the firmware to [perform airgapped upgrades](#prerequisite-for-upgrading-via-microsd) using one of the two methods listed below:
 
-#### Method 1: Signing from Krux
+#### Method 1: Signing from VaultSeed
 First, calculate the SHA256 hash of the new firmware by running:
 ```bash
 ./krux sha256 build/firmware.bin
@@ -91,7 +91,7 @@ First, calculate the SHA256 hash of the new firmware by running:
 
 Copy this hex string and turn it into a QR code using whichever QR code generator you'd like.
 
-In Krux, enter the mnemonic of your private key that will be used for signing, and go to **Sign -> Message**. Scan the QR code you generated, and you will be asked if you wish to sign the hash. Proceed, and you will be presented with a base64-encoded string containing the signature, as text and as a QR code.
+In VaultSeed, enter the mnemonic of your private key that will be used for signing, and go to **Sign -> Message**. Scan the QR code you generated, and you will be asked if you wish to sign the hash. Proceed, and you will be presented with a base64-encoded string containing the signature, as text and as a QR code.
 
 Take this string and create a signature file by running:
 ```bash
@@ -107,3 +107,5 @@ With the keypair [you generated before](#prerequisite-for-upgrading-via-microsd)
 ```
 
 This will generate a `firmware.bin.sig` file containing a signature of the firmware's SHA256 hash.
+
+

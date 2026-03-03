@@ -46,11 +46,11 @@ If flashing fails with an error: `Greeting fail, check serial port (SLIP receive
 
 **WonderMV**: Some units have a hardware issue that can leave the device in a bad state in which it can't be flashed . If flashing fails, unplug the USB cable, wait 10+ seconds to allow the hardware to fully reset, then reconnect and retry.
 
-On **Windows**, you may encounter the **flash failed** error when trying to flash Yahboom or WonderMV using **Krux-Installer**. This means that Windows could not find the driver to communicate with the device via USB (an unrecognized *USB Serial* will be listed in *Device Manager -> Other devices*). To fix this, download and install the [CH340/341 driver](https://www.wch-ic.com/downloads/ch341ser_exe.html) (a *USB-SERIAL CH340* will be listed in *Device Manager -> Ports (COM & LPT)*).
+On **Windows**, you may encounter the **flash failed** error when trying to flash Yahboom or WonderMV using **VaultSeed Installer**. This means that Windows could not find the driver to communicate with the device via USB (an unrecognized *USB Serial* will be listed in *Device Manager -> Other devices*). To fix this, download and install the [CH340/341 driver](https://www.wch-ic.com/downloads/ch341ser_exe.html) (a *USB-SERIAL CH340* will be listed in *Device Manager -> Ports (COM & LPT)*).
 
-<img src="/krux/img/krux-installer/flash-failed.jpg" style="width: 38%; min-width: 320px;">
-<img src="/krux/img/krux-installer/usb-serial.jpg" style="width: 30%; min-width: 240px;">
-<img src="/krux/img/krux-installer/usb-serial-driver.jpg" style="width: 25%; min-width: 180px;">
+<img src="/VaultSeed/img/vaultseed-installer/flash-failed.jpg" style="width: 38%; min-width: 320px;">
+<img src="/VaultSeed/img/vaultseed-installer/usb-serial.jpg" style="width: 30%; min-width: 240px;">
+<img src="/VaultSeed/img/vaultseed-installer/usb-serial-driver.jpg" style="width: 25%; min-width: 180px;">
 
 
 ## **After Installing**
@@ -90,13 +90,13 @@ If the colors displayed on the interface themes or camera feed are incorrect, yo
 
         If, after the step (1), the screen turns black and you don't see anything, don't panic, don't press any button, just wait 5 seconds. After 5 seconds the device will automatically reboot with the previous `LCD Type` setting meaning you should not change this setting and maybe try again with `Inverted Colors` and `BGR Colors` only.
 
-        If you pressed `PREVIOUS` (UP) and Krux saved the wrong `LCD Type` setting, you will have to remove all stored settings to see the screen working again. If settings were on SD, remove it from the device and edit or delete the settings manually. If settings were on device's internal memory you will have to wipe it's entire flash memory. You can use the [Krux-Installer -> Wipe device feature](getting-started/installing/from-gui/usage.md/#wipe-device) or type a command on terminal with the device connected. On Linux for example, go to the folder where you downloaded the Krux firmware and use *Ktool* to fully wipe your device (on other OS use `ktool-win.exe` or `ktool-mac`):
+        If you pressed `PREVIOUS` (UP) and VaultSeed saved the wrong `LCD Type` setting, you will have to remove all stored settings to see the screen working again. If settings were on SD, remove it from the device and edit or delete the settings manually. If settings were on device's internal memory you will have to wipe it's entire flash memory. You can use the [VaultSeed Installer -> Wipe device feature](getting-started/installing/from-gui/usage.md/#wipe-device) or type a command on terminal with the device connected. On Linux for example, go to the folder where you downloaded the VaultSeed firmware and use *Ktool* to fully wipe your device (on other OS use `ktool-win.exe` or `ktool-mac`):
 
         ```bash
         ./ktool-linux -B goE -b 1500000 -E
         ```
 
-        Then flash the firmware again using Krux-Installer or by typing on the terminal:
+        Then flash the firmware again using VaultSeed Installer or by typing on the terminal:
 
         ```bash
         ./ktool-linux -B goE -b 1500000 maixpy_amigo/kboot.kfpkg
@@ -110,15 +110,15 @@ You can also install [MaixPy IDE](https://dl.sipeed.com/shareURL/MAIX/MaixPy/ide
 
 ## **Usage**
 
-### Why isn't Krux scanning the QR code?
+### Why isn't VaultSeed scanning the QR code?
 
 <video style="width: 20%; min-width: 240px;" controls class="align-right margin-left">
     <source src="../img/cam-adjust-pliers.mp4" type="video/mp4"></source>
 </video>
 
-The screen displays exactly what Krux sees through its camera. If the QR code looks blurry, the lens may be out of focus. You can correct this by gently rotating the lens: turn it **counterclockwise (unscrewing to reduce focus distance)** or **clockwise (screwing to increase focus distance)** until the image sharpens. Be aware that the factory may have secured the lens with a small drop of glue, making the first adjustment a bit harder. To rotate the plastic lens ring, use your fingertip, tweezers, or small precision pliers (ideally wrapped with electrical tape to prevent scratches). Once adjusted, future focusing should be much easier.
+The screen displays exactly what VaultSeed sees through its camera. If the QR code looks blurry, the lens may be out of focus. You can correct this by gently rotating the lens: turn it **counterclockwise (unscrewing to reduce focus distance)** or **clockwise (screwing to increase focus distance)** until the image sharpens. Be aware that the factory may have secured the lens with a small drop of glue, making the first adjustment a bit harder. To rotate the plastic lens ring, use your fingertip, tweezers, or small precision pliers (ideally wrapped with electrical tape to prevent scratches). Once adjusted, future focusing should be much easier.
 
-If the lens is already adjusted, the problem may be the distance to the QR code. Hold the device close to the code, then slowly pull it back until the full QR code fits on the screen. Once the code appears sharp and clear, Krux should detect it quickly and respond immediately.
+If the lens is already adjusted, the problem may be the distance to the QR code. Hold the device close to the code, then slowly pull it back until the full QR code fits on the screen. Once the code appears sharp and clear, VaultSeed should detect it quickly and respond immediately.
 
 ----8<----
 camera-scan-tips.en.txt
@@ -128,14 +128,14 @@ camera-scan-tips.en.txt
 
 ### Error when scanning QR code?
 
-If Krux is recognizing that it sees a QR code but is displaying an error message after reading it, the likely reason is that the QR code is not in a format that Krux works with. We have listed the supported formats below:
+If VaultSeed is recognizing that it sees a QR code but is displaying an error message after reading it, the likely reason is that the QR code is not in a format that VaultSeed works with. We have listed the supported formats below:
 
 For BIP39 mnemonics:
 
-- BIP39 Plaintext (Used by Krux and [https://iancoleman.io/bip39/](https://iancoleman.io/bip39/))
+- BIP39 Plaintext (Used by VaultSeed and [https://iancoleman.io/bip39/](https://iancoleman.io/bip39/))
 - SeedSigner [SeedQR and CompactSeedQR](https://github.com/SeedSigner/seedsigner/blob/dev/docs/seed_qr/README.md) Formats
 - [UR Type `crypto-bip39`](https://github.com/BlockchainCommons/Research/blob/master/papers/bcr-2020-006-urtypes.md)
-- Encrypted QR Code (Format created by Krux, [more information here](getting-started/features/encryption/encryption.md/#regarding-bip39-mnemonics))
+- Encrypted QR Code (Format created by VaultSeed, [more information here](getting-started/features/encryption/encryption.md/#regarding-bip39-mnemonics))
 
 For Wallet output descriptor:
 
@@ -149,21 +149,21 @@ For PSBT (Partially Signed Bitcoin Transactions):
 - Raw Bytes
 - [UR Type `crypto-psbt`](https://github.com/BlockchainCommons/Research/blob/master/papers/bcr-2020-006-urtypes.md)
 
-Additionally, Krux recognizes animated QR codes that use either the plaintext `pMofN` (the Specter QR format) or binary [`UR`](https://github.com/BlockchainCommons/Research/blob/master/papers/bcr-2020-005-ur.md) encodings.
+Additionally, VaultSeed recognizes animated QR codes that use either the plaintext `pMofN` (the Specter QR format) or binary [`UR`](https://github.com/BlockchainCommons/Research/blob/master/papers/bcr-2020-005-ur.md) encodings.
 
 
-### Computer not reading QR code that Krux displays?
+### Computer not reading QR code that VaultSeed displays?
 
 You can toggle brightness of PSBTs QR codes by pressing `PAGE` or `PREVIOUS` button. If you are using an M5StickV, the small screen makes it difficult for laptop webcams to capture enough detail to parse the QR codes it displays. For now, a workaround you can do is to take a picture or video of the QR code with a better-quality camera (such as your phone), then enlarge and display the photo or video to your webcam.
 
-Alternatively, it may be simpler to use a mobile wallet (BlueWallet or Nunchuk) with the M5StickV since phone cameras don't seem to have issues reading the small QR codes. You can also save the PSBT on a microSD card for Krux to sign and then save the signed PSBT to transfer the file to the computer or phone. Other QR codes displayed by Krux can also be exported as an image to the SD card.
+Alternatively, it may be simpler to use a mobile wallet (BlueWallet or Nunchuk) with the M5StickV since phone cameras don't seem to have issues reading the small QR codes. You can also save the PSBT on a microSD card for VaultSeed to sign and then save the signed PSBT to transfer the file to the computer or phone. Other QR codes displayed by VaultSeed can also be exported as an image to the SD card.
 
-### Why Does Krux Say the Entropy of My Fifty Dice Rolls Does Not Contain 128 Bits of Entropy?
+### Why Does VaultSeed Say the Entropy of My Fifty Dice Rolls Does Not Contain 128 Bits of Entropy?
 
 Please check how [entropy measurement](getting-started/features/entropy.md) works.
 
-### Why isn't Krux detecting my microSD card or presenting an error?
-Starting from version **23.09.0**, Krux supports **SD card hot plugging**. If you’re using an older version, the SD card may only be detected at boot - so make sure to **power off Krux before inserting the microSD card**.
+### Why isn't VaultSeed detecting my microSD card or presenting an error?
+Starting from version **23.09.0**, VaultSeed supports **SD card hot plugging**. If youâ€™re using an older version, the SD card may only be detected at boot - so make sure to **power off VaultSeed before inserting the microSD card**.
 
 To check card compatibility, go to [Tools -> Device Tests -> Check SD Card](getting-started/features/tools.md/#check-sd-card). Version **25.10.0** further improved SD card compatibility, so updating may resolve detection issues.
 
@@ -177,3 +177,4 @@ It seems WonderMV has a hardware design issue: It lacks a decoupling capacitor i
 
 - Insert your SD card before turning on the device, for example, when signing PSBTs, insert the SD card containing the unsigned PSBT before powering WonderMV on and loading your key.
 - Try different SD cards, as some require less current and won't cause the device to reboot.
+

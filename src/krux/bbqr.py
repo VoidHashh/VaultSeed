@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-# This code an adaptation of Coinkite's BBQr python implementation for Krux environment
+# This code an adaptation of Coinkite's BBQr python implementation for VaultSeed environment
 # https://github.com/coinkite/BBQr
 
 import gc

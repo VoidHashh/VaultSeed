@@ -1,17 +1,17 @@
 # Tamper Detection Mechanism (Experimental)
-Krux's tamper detection tool combines cryptographic hashes, a *Tamper Check Code (TC Code)*, and camera-generated entropy to create a tamper indicator that is unique to each device, represented by a memorable image and two sets of two words.
+VaultSeed's tamper detection tool combines cryptographic hashes, a *Tamper Check Code (TC Code)*, and camera-generated entropy to create a tamper indicator that is unique to each device, represented by a memorable image and two sets of two words.
 
 Before we get into details, let's start with some limitations and necessary prerequisites to allow the feature to work.
 
-## Krux Security Model - Good Practices and Limitations
+## VaultSeed Security Model - Good Practices and Limitations
 
-To secure your Krux device, always verify firmware authenticity before installation, particularly when flashing via USB.
+To secure your VaultSeed device, always verify firmware authenticity before installation, particularly when flashing via USB.
 
 ### Firmware Verification Methods
 
 - **Using OpenSSL Command-Line Tool:** Follow [from pre-built official release](../installing/from-pre-built-release.md/#verify-the-files) instructions to verify the firmware's signature manually. This method provides a high level of assurance but requires familiarity with command-line operations.
 
-- **Using Krux-Installer:** Our [Krux-Installer GUI](../installing/from-gui/index.md) can facilitate this process by downloading our firmware from Github and verifying its signature. It also guides you through manual verification if desired. Just don't forget to verify the integrity of the **Krux-Installer** as well.
+- **Using VaultSeed Installer:** Our [VaultSeed Installer GUI](../installing/from-gui/index.md) can facilitate this process by downloading our firmware from Github and verifying its signature. It also guides you through manual verification if desired. Just don't forget to verify the integrity of the **VaultSeed Installer** as well.
 
 
 ### Recommendations
@@ -33,7 +33,7 @@ When you enable the *TC Flash Hash at Boot* feature, the device will require you
 
 *TC Flash Hash* produces a unique visual and verbal signature (an image and two sets of words) that helps you instantly recognize unauthorized changes. See below for details on how it works and what to expect from its output.
 
-### How Krux Tamper Detection Works
+### How VaultSeed Tamper Detection Works
 
 ## Tamper Check Code (TC Code)
 Before being stored in the device’s flash, the *TC Code* is hashed together with the K210 chip’s unique ID and stretched using PBKDF2. This ensures the *TC Code* is not retrievable via a flash dump and can only be brute-forced outside the device if the attacker also has access to the device’s unique ID (UID). By allowing letters, special characters, and running 100k iterations of PBKDF2, brute-forcing the *TC Code* from dumped data becomes more time-consuming and resource-intensive.
@@ -66,9 +66,9 @@ Any change in the flash content results in a different image and words:
 
 ### Filling Empty Flash Memory Blocks
 
-Use this to enhance tamper detection. Krux performs a memory sweep while capturing a live feed from the camera. Whenever an empty block is found in the flash memory, it uses the data from the image to fill these empty spaces when the entropy is good enough. It estimates the image's entropy by evaluating its color variance waiting until a minimum threshold is met.
+Use this to enhance tamper detection. VaultSeed performs a memory sweep while capturing a live feed from the camera. Whenever an empty block is found in the flash memory, it uses the data from the image to fill these empty spaces when the entropy is good enough. It estimates the image's entropy by evaluating its color variance waiting until a minimum threshold is met.
 
-A progress bar is shown below, when the highlighted color appears, it means that this flash memory space is not empty and Krux will move on to the next one to fill any empty spaces. When you run it a second time, nothing will change because all the memory will be filled. You will see the progress bar move quickly, showing only the highlighted color, and a still image will be displayed on the camera during the process.
+A progress bar is shown below, when the highlighted color appears, it means that this flash memory space is not empty and VaultSeed will move on to the next one to fill any empty spaces. When you run it a second time, nothing will change because all the memory will be filled. You will see the progress bar move quickly, showing only the highlighted color, and a still image will be displayed on the camera during the process.
 
 ### Ensuring Tamper Detection
 
@@ -78,7 +78,7 @@ The *TC Flash Hash* function securely hashes the combination of the *TC Code*, d
 
 After setting a *TC Code* user can use the *TC Flash Hash* feature, available in **Tools -> Flash Tools -> TC Flash Hash**.
 
-By navigating to **Settings -> Security -> TC Flash Hash at Boot**, users can set Krux to always require *TC Flash Hash* verification after device is turned on. If a wrong *TC Code* is typed at boot, the device will turn off. Nothing else will happen if the wrong *TC Code* is entered multiple times. As *TC Code* verification data is stored in the user's region of memory, the requirement to type at boot is disabled if the user [erases user's data](../features/tools.md/#erase-users-data) or [wipe device](../installing/from-gui/usage.md/#wipe-device). Flashing an older firmware version, prior to *TC Flash Hash* support, will also disable this feature.
+By navigating to **Settings -> Security -> TC Flash Hash at Boot**, users can set VaultSeed to always require *TC Flash Hash* verification after device is turned on. If a wrong *TC Code* is typed at boot, the device will turn off. Nothing else will happen if the wrong *TC Code* is entered multiple times. As *TC Code* verification data is stored in the user's region of memory, the requirement to type at boot is disabled if the user [erases user's data](../features/tools.md/#erase-users-data) or [wipe device](../installing/from-gui/usage.md/#wipe-device). Flashing an older firmware version, prior to *TC Flash Hash* support, will also disable this feature.
 
 ## Potential Attack Scenarios and Their Mitigation
 ### Challenge for an Attacker
@@ -111,6 +111,6 @@ An attacker faces major challenges in replacing the firmware:
 
 ## Conclusion
 
-The *TC Flash Hash* tool significantly enhances security by making it infeasible for attackers to tamper with firmware without being detected. By combining *TC Code* hashing, filling empty memory with random entropy, and verification of the the unique image and set of words, Krux allows the detection of any tamper attempts.
+The *TC Flash Hash* tool significantly enhances security by making it infeasible for attackers to tamper with firmware without being detected. By combining *TC Code* hashing, filling empty memory with random entropy, and verification of the the unique image and set of words, VaultSeed allows the detection of any tamper attempts.
 
 **Note**: The strength of this defense strategy depends on maintaining a strong, confidential *TC Code*, removing the SD card before running *TC Flash Hash* and following usual security and privacy practices.

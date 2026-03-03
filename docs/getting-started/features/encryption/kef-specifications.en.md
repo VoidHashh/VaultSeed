@@ -43,7 +43,7 @@ where:
 * `id` = salt (variable-length, prepended to envelope; bytes: if str: non-normalized encode as utf-8)
 * `i` = iteration count (3 bytes, big-endian)
 
-The stored iteration field `i` MUST be ≥ 1. The effective PBKDF2 iteration count is `i` if `i > 10,000`, otherwise `i * 10,000`.
+The stored iteration field `i` MUST be â‰¥ 1. The effective PBKDF2 iteration count is `i` if `i > 10,000`, otherwise `i * 10,000`.
 
 Compression (when enabled) uses zlib.compress(wbits=-10) or raw deflate(micropython).
 
@@ -426,24 +426,24 @@ k: pbkdf2_hmac_sha256(K, id, i)
 
 | Ver | Name       | Mode | IV | Padding | Compress | Authentication Method  | Auth        | Intended Use Case       |
 |-----|------------|------|----|---------|----------|------------------------|-------------|-------------------------|
-| 0   | AES-ECB v1 | ECB  | –  | NUL     | No       | SHA256(plaintext)[:16] | 16 B        | Legacy high-entropy     |
+| 0   | AES-ECB v1 | ECB  | â€“  | NUL     | No       | SHA256(plaintext)[:16] | 16 B        | Legacy high-entropy     |
 | 1   | AES-CBC v1 | CBC  | 16 | NUL     | No       | SHA256(plaintext)[:16] | 16 B        | Legacy high-entropy     |
-| 5   | AES-ECB    | ECB  | –  | NUL     | No       | SHA256(v+P+k)[:3]      | 3 B exposed | Small, high-entropy     |
-| 6   | AES-ECB +p | ECB  | –  | PKCS7   | No       | SHA256(plaintext)[:4]  | 4 B         | General Mid-sized       |
-| 7   | AES-ECB +c | ECB  | –  | PKCS7   | Yes      | SHA256(compressed)[:4] | 4 B         | Large; duplicate blocks |
+| 5   | AES-ECB    | ECB  | â€“  | NUL     | No       | SHA256(v+P+k)[:3]      | 3 B exposed | Small, high-entropy     |
+| 6   | AES-ECB +p | ECB  | â€“  | PKCS7   | No       | SHA256(plaintext)[:4]  | 4 B         | General Mid-sized       |
+| 7   | AES-ECB +c | ECB  | â€“  | PKCS7   | Yes      | SHA256(compressed)[:4] | 4 B         | Large; duplicate blocks |
 | 10  | AES-CBC    | CBC  | 16 | NUL     | No       | SHA256(v+iv+P+k)[:4]   | 4 B exposed | Small, high-entropy     |
 | 11  | AES-CBC +p | CBC  | 16 | PKCS7   | No       | SHA256(plaintext)[:4]  | 4 B         | General mid-sized       |
 | 12  | AES-CBC +c | CBC  | 16 | PKCS7   | Yes      | SHA256(compressed)[:4] | 4 B         | General large           |
-| 15  | AES-CTR    | CTR  | 12 | –       | No       | SHA256(plaintext)[:4]  | 4 B         | General mid-sized       |
-| 16  | AES-CTR +c | CTR  | 12 | –       | Yes      | SHA256(compressed)[:4] | 4 B         | General large           |
-| 20  | AES-GCM    | GCM  | 12 | –       | No       | GCM authtag[:4]        | 4 B exposed | Best, General mid-sized |
-| 21  | AES-GCM +c | GCM  | 12 | –       | Yes      | GCM authtag[:4]        | 4 B exposed | Best, General large     |
+| 15  | AES-CTR    | CTR  | 12 | â€“       | No       | SHA256(plaintext)[:4]  | 4 B         | General mid-sized       |
+| 16  | AES-CTR +c | CTR  | 12 | â€“       | Yes      | SHA256(compressed)[:4] | 4 B         | General large           |
+| 20  | AES-GCM    | GCM  | 12 | â€“       | No       | GCM authtag[:4]        | 4 B exposed | Best, General mid-sized |
+| 21  | AES-GCM +c | GCM  | 12 | â€“       | Yes      | GCM authtag[:4]        | 4 B exposed | Best, General large     |
 
 ---
 
 ## KEF Implementation Concepts
 
-Using examples from, and as an introduction to the reference [KEF implementation](https://github.com/selfcustody/krux/blob/develop/src/krux/kef.py), we'll quickly cover some basic concepts that may be helpful in getting started with your own KEF implementation.
+Using examples from, and as an introduction to the reference [KEF implementation](https://github.com/VoidHashh/VaultSeed/blob/develop/src/krux/kef.py), we'll quickly cover some basic concepts that may be helpful in getting started with your own KEF implementation.
 
 ### Version Configuration
 From the version details and summary table: note that all KEF versions can be defined as having a set of parameters which define that version's KEF rules. For ease-of-maintenance - and also for extending later, it may be useful to store these in a central configuration. Within our sample reference, these are defined by constants `kef.VERSIONS`, `kef.MODE_NUMBERS` and `kef.MODE_IVS`.
@@ -465,4 +465,5 @@ After encryption, you'll need to **wrap** the `id`, `version`, `iterations` and 
 
 ### On Further Encoding KEF Envelopes
 Outside the scope of this specification on KEF envelopes, which are strings of bytes, implementations will surely need to make choices about encoding/decoding schemes. Whether for QR transport, copy-pasting into messages, embedding into json documents, in-plain-sight within other document formats, or persisted in binary files, these choices are left to implementors.
+
 

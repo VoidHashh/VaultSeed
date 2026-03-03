@@ -79,7 +79,7 @@ RUN /kruxenv/bin/pip install pyserial==3.4
 
 ############
 # build-software
-# copy vendor, firmware and Krux (src) files
+# copy vendor, firmware and VaultSeed (src) files
 # install embit dependency
 ############
 FROM build-base AS build-software
@@ -120,7 +120,7 @@ RUN cp -r vendor/urtypes/src/urtypes "${DEVICE_BUILTIN}"
 RUN cp -r vendor/foundation-ur-py/src/ur "${DEVICE_BUILTIN}"
 RUN cp -r vendor/embit/src/embit "${DEVICE_BUILTIN}"
 
-# copy Krux (src) to WORKDIR (src)
+# copy VaultSeed (src) to WORKDIR (src)
 COPY ./src src
 # rename boot.py
 RUN mv src/boot.py src/_boot.py
@@ -132,7 +132,7 @@ RUN cp -r src/. "${DEVICE_BUILTIN}"
 
 ############
 # build-firmware
-# python compilation of Krux and its dependencies inside MaixPy
+# python compilation of VaultSeed and its dependencies inside MaixPy
 # creation of the firmware.bin
 ############
 FROM build-software AS build-firmware
