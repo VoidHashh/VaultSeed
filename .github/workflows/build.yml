@@ -48,7 +48,7 @@ jobs:
           context: .
           build-args: DEVICE=maixpy_m5stickv
           push: true
-          tags: localhost:5000/selfcustody/krux-builder-m5stickv:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-m5stickv:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware for M5StickV
@@ -56,7 +56,7 @@ jobs:
         if: matrix.device == 'maixpy_m5stickv'
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/selfcustody/krux-builder-m5stickv:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-m5stickv:latest
           path: /src/firmware/Kboot/build/.
       - name: Upload firmware for M5StickV
         if: matrix.device == 'maixpy_m5stickv'
@@ -72,7 +72,7 @@ jobs:
           context: .
           build-args: DEVICE=maixpy_amigo
           push: true
-          tags: localhost:5000/selfcustody/krux-builder-amigo:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-amigo:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware for Amigo
@@ -80,7 +80,7 @@ jobs:
         if: matrix.device == 'maixpy_amigo'
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/selfcustody/krux-builder-amigo:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-amigo:latest
           path: /src/firmware/Kboot/build/.
       - name: Upload firmware for Amigo
         if: matrix.device == 'maixpy_amigo'
@@ -96,7 +96,7 @@ jobs:
           context: .
           build-args: DEVICE=maixpy_dock
           push: true
-          tags: localhost:5000/selfcustody/krux-builder-dock:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-dock:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware for Dock
@@ -104,7 +104,7 @@ jobs:
         if: matrix.device == 'maixpy_dock'
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/selfcustody/krux-builder-dock:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-dock:latest
           path: /src/firmware/Kboot/build/.
       - name: Upload firmware for Dock
         if: matrix.device == 'maixpy_dock'
@@ -120,7 +120,7 @@ jobs:
           context: .
           build-args: DEVICE=maixpy_yahboom
           push: true
-          tags: localhost:5000/selfcustody/krux-builder-yahboom:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-yahboom:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware for Yahboom
@@ -128,7 +128,7 @@ jobs:
         if: matrix.device == 'maixpy_yahboom'
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/selfcustody/krux-builder-yahboom:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-yahboom:latest
           path: /src/firmware/Kboot/build/.
       - name: Upload firmware for Yahboom
         if: matrix.device == 'maixpy_yahboom'
@@ -144,7 +144,7 @@ jobs:
           context: .
           build-args: DEVICE=maixpy_cube
           push: true
-          tags: localhost:5000/selfcustody/krux-builder-cube:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-cube:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware for Cube
@@ -152,7 +152,7 @@ jobs:
         if: matrix.device == 'maixpy_cube'
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/selfcustody/krux-builder-cube:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-cube:latest
           path: /src/firmware/Kboot/build/.
       - name: Upload firmware for Cube
         if: matrix.device == 'maixpy_cube'
@@ -168,7 +168,7 @@ jobs:
           context: .
           build-args: DEVICE=maixpy_wonder_mv
           push: true
-          tags: localhost:5000/selfcustody/krux-builder-wonder-mv:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-wonder-mv:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware for WonderMV
@@ -176,7 +176,7 @@ jobs:
         if: matrix.device == 'maixpy_wonder_mv'
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/selfcustody/krux-builder-wonder-mv:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-wonder-mv:latest
           path: /src/firmware/Kboot/build/.
       - name: Upload firmware for WonderMV
         if: matrix.device == 'maixpy_wonder_mv'
@@ -192,7 +192,7 @@ jobs:
           context: .
           build-args: DEVICE=maixpy_tzt
           push: true
-          tags: localhost:5000/selfcustody/krux-builder-tzt:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-tzt:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware for TZT
@@ -200,7 +200,7 @@ jobs:
         if: matrix.device == 'maixpy_tzt'
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/selfcustody/krux-builder-tzt:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-tzt:latest
           path: /src/firmware/Kboot/build/.
       - name: Upload firmware for TZT
         if: matrix.device == 'maixpy_tzt'
@@ -213,3 +213,5 @@ jobs:
         run: |
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+
