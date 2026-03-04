@@ -322,8 +322,8 @@ def upgrade():
         try:
             pubkey = ec.PublicKey.from_string(SIGNER_PUBKEY)
         except:
-        display.flash_text("Invalid public key", theme.error_color)
-        return False
+            display.flash_text("Invalid public key", theme.error_color)
+            return False
 
     # Validate firmware file size
     new_size = fsize(firmware_path)
