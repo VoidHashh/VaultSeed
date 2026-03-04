@@ -26,7 +26,10 @@ import uhashlib_hw
 import time
 import flash
 import board
-from embit import ec
+try:
+    from embit import ec
+except ImportError:
+    ec = None
 from .input import Input, BUTTON_PAGE, BUTTON_PAGE_PREV
 from .metadata import SIGNER_PUBKEY
 from .display import display
@@ -312,9 +315,13 @@ def upgrade():
 
     # Validate curr pubkey
     pubkey = None
-    try:
-        pubkey = ec.PublicKey.from_string(SIGNER_PUBKEY)
-    except:
+    if ec is None or not SIGNER_PUBKEY:
+        # Signature verification unavailable; skip check
+        pubkey = None
+    else:
+        try:
+            pubkey = ec.PublicKey.from_string(SIGNER_PUBKEY)
+        except:
         display.flash_text("Invalid public key", theme.error_color)
         return False
 
@@ -328,24 +335,25 @@ def upgrade():
 
     # Check if signature file exist
     sig = None
-    try:
-        with open(firmware_path + ".sig", "rb") as sig_file:
-            sig = sig_file.read()
-    except:
-        display.flash_text(t("Missing signature file"), theme.error_color)
-        return False
+    if pubkey is not None:
+        try:
+            with open(firmware_path + ".sig", "rb") as sig_file:
+                sig = sig_file.read()
+        except:
+            display.flash_text(t("Missing signature file"), theme.error_color)
+            return False
 
-    # Validate signature
-    firmware_hash = sha256(firmware_path)
-    try:
-        # Parse, serialize, and reparse to ensure signature is compact prior to verification
-        sig = ec.Signature.parse(ec.Signature.parse(sig).serialize())
-        if not pubkey.verify(sig, firmware_hash):
+        # Validate signature
+        firmware_hash = sha256(firmware_path)
+        try:
+            # Parse, serialize, and reparse to ensure signature is compact prior to verification
+            sig = ec.Signature.parse(ec.Signature.parse(sig).serialize())
+            if not pubkey.verify(sig, firmware_hash):
+                display.flash_text(t("Bad signature"), theme.error_color)
+                return False
+        except:
             display.flash_text(t("Bad signature"), theme.error_color)
             return False
-    except:
-        display.flash_text(t("Bad signature"), theme.error_color)
-        return False
 
     # Validate firmware device type
     if not is_this_device(firmware_path):

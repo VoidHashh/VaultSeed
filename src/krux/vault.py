@@ -35,10 +35,18 @@ def random_bytes(n):
         try:
             return os.urandom(n)
         except:
-            # Last-resort fallback to avoid crashes on ports without os.urandom
+            # Last-resort fallback using time jitter as entropy source
+            import time
             out = bytearray()
-            for _ in range(n):
-                out.append(int.from_bytes(uhashlib_hw.sha256(b"x").digest()[:1], "big"))
+            seed = int(time.ticks_us()) & 0xFF
+            for i in range(n):
+                seed = int.from_bytes(
+                    uhashlib_hw.sha256(
+                        bytes([seed, i & 0xFF, int(time.ticks_us()) & 0xFF])
+                    ).digest()[:1],
+                    "big",
+                )
+                out.append(seed)
             return bytes(out)
 
 

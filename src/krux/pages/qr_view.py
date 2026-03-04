@@ -21,7 +21,6 @@
 # THE SOFTWARE.
 
 import qrcode
-from embit.wordlists.bip39 import WORDLIST
 from . import Page, Menu, MENU_CONTINUE, MENU_EXIT, ESC_KEY
 from ..themes import theme, WHITE, BLACK, DARKGREY
 from ..krux_settings import t
@@ -58,12 +57,7 @@ class SeedQRView(Page):
             self.code = qrcode.encode(data)  # pylint: disable=E1101
             self.title = title
         else:
-            if self.binary:
-                self.title = "Compact SeedQR"
-                self.code = self._binary_seed_qr()
-            else:
-                self.title = "SeedQR"
-                self.code = self._seed_qr()
+            raise ValueError("QRView requires data parameter")
         self.qr_size = get_size(self.code)
         self.region_size = 7 if self.qr_size == 21 else 5
         self.columns = (self.qr_size + self.region_size - 1) // self.region_size
@@ -72,26 +66,6 @@ class SeedQRView(Page):
             self.qr_foreground = WHITE
         else:
             self.qr_foreground = None
-
-    def _seed_qr(self):
-        words = self.ctx.wallet.key.mnemonic.split(" ")
-        numbers = ""
-        for word in words:
-            numbers += str("%04d" % WORDLIST.index(word))
-        return qrcode.encode(numbers)  # pylint: disable=E1101
-
-    def _binary_seed_qr(self):
-        binary_seed = self._to_compact_seed_qr(self.ctx.wallet.key.mnemonic)
-        return qrcode.encode(binary_seed)  # pylint: disable=E1101
-
-    def _to_compact_seed_qr(self, mnemonic):
-        mnemonic = mnemonic.split(" ")
-        checksum_bits = 8 if len(mnemonic) == 24 else 4
-        indexes = [WORDLIST.index(word) for word in mnemonic]
-        bitstring = "".join(["{:0>11}".format(bin(index)[2:]) for index in indexes])[
-            :-checksum_bits
-        ]
-        return int(bitstring, 2).to_bytes((len(bitstring) + 7) // 8, "big")
 
     def highlight_qr_region(self, code, region=(0, 0, 0, 0), zoom=False):
         """Draws in white a highlighted region of the QR code"""

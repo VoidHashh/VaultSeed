@@ -126,12 +126,7 @@ class Utils(Page):
         """Reusable capture from keyboard for index number"""
 
         if range_max is None:
-            try:
-                from embit.bip32 import HARDENED_INDEX
-
-                range_max = HARDENED_INDEX - 1
-            except:
-                range_max = 0x7FFFFFFF
+            range_max = 0x7FFFFFFF
 
         val = self.capture_from_keypad(
             title,
