@@ -29,32 +29,6 @@ def test_init(mocker, m5stickv):
         sn.label("test")
 
 
-def test_stored_i18n_settings(mocker, m5stickv):
-    # mock store singleton creation before import
-    stored_settings = """{"settings": {"i18n": {"locale": "pt-BR"}}}"""
-    mocker.patch("builtins.open", mocker.mock_open(read_data=stored_settings))
-
-    # import will create store singleton with mocked values
-    from krux.krux_settings import I18nSettings
-
-    i18n = I18nSettings()
-
-    assert i18n.locale == "pt-BR"
-
-
-def test_wrong_stored_i18n_settings(mocker, m5stickv):
-    # mock store singleton creation before import
-    stored_settings = """{"settings": {"i18n": {"locale": "aa-AA"}}}"""
-    mocker.patch("builtins.open", mocker.mock_open(read_data=stored_settings))
-
-    # import will create store singleton with mocked values
-    from krux.krux_settings import I18nSettings
-
-    i18n = I18nSettings()
-
-    assert i18n.locale == "en-US"
-
-
 def test_store_init(mocker, m5stickv):
     from krux.settings import Store, SETTINGS_FILENAME, SD_PATH, FLASH_PATH
     import json

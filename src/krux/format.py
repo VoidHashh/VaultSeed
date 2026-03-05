@@ -51,7 +51,7 @@ def format_btc(amount):
 def render_decimal_separator():
     """Return decimal separator depending on locale"""
     decimal_separator = ","
-    if Settings().i18n.locale in (DEFAULT_LOCALE, "ko-KR", "zh-CN", "ja-JP"):
+    if Settings().appearance.locale in (DEFAULT_LOCALE, "ko-KR", "zh-CN", "ja-JP"):
         decimal_separator = "."
 
     return decimal_separator

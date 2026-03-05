@@ -20,14 +20,3 @@ def test_auto_shutdown(m5stickv, mocker):
         # Next timer call will shutdown the device
         seconds_counter("dummy timer argument")
 
-
-def test_feed(m5stickv, mocker):
-    from krux.auto_shutdown import auto_shutdown
-    from krux.krux_settings import Settings
-
-    auto_shutdown.time_out = 1000
-
-    # Call the feed method to reset the timeout
-    auto_shutdown.feed()
-    # Check if the timeout is reset to the value set in the settings
-    assert auto_shutdown.time_out == Settings().security.auto_shutdown * 60

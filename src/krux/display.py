@@ -278,7 +278,7 @@ class Display:
             return (text, sum((len(x) for x in text)))
 
         columns = self.ascii_chars_per_line()
-        if Settings().i18n.locale in [
+        if Settings().appearance.locale in [
             "ko-KR",
             "zh-CN",
             "ja-JP",
