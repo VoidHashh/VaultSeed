@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from .krux_settings import Settings, ThemeSettings
+from .krux_settings import Settings, AppearanceSettings
 from .kboard import kboard
 
 # To create new colors from RGB values use firmware/scripts/rgbconv.py script
@@ -50,7 +50,7 @@ TEST_TXT_COLOR = GREEN
 
 
 THEMES = {
-    ThemeSettings.DARK_THEME_NAME: {
+    AppearanceSettings.DARK_THEME_NAME: {
         "background": BLACK,
         "info_background": LIGHTBLACK,
         "foreground": WHITE,
@@ -63,7 +63,7 @@ THEMES = {
         "error": RED,
         "highlight": LIGHTBLUE,
     },
-    ThemeSettings.LIGHT_THEME_NAME: {
+    AppearanceSettings.LIGHT_THEME_NAME: {
         "background": WHITE,
         "info_background": DARKWHITE,
         "foreground": BLACK,
@@ -76,7 +76,7 @@ THEMES = {
         "error": RED,
         "highlight": BLUE,
     },
-    ThemeSettings.ORANGE_THEME_NAME: {
+    AppearanceSettings.ORANGE_THEME_NAME: {
         "background": BLACK,
         "info_background": LIGHTBLACK,
         "foreground": ORANGE,
@@ -89,7 +89,7 @@ THEMES = {
         "error": RED,
         "highlight": YELLOW,
     },
-    ThemeSettings.PINK_THEME_NAME: {
+    AppearanceSettings.PINK_THEME_NAME: {
         "background": BLACK,
         "info_background": LIGHTBLACK,
         "foreground": LIGHT_PINK,
@@ -102,7 +102,7 @@ THEMES = {
         "error": RED,
         "highlight": PINK,
     },
-    ThemeSettings.GREEN_THEME_NAME: {
+    AppearanceSettings.GREEN_THEME_NAME: {
         "background": BLACK,
         "info_background": LIGHTBLACK,
         "foreground": GREEN,
