@@ -8,39 +8,35 @@ def mock_modules(mocker):
 def test_init(mocker, m5stickv):
     mock_modules(mocker)
     from krux.context import Context
-
     c = Context()
-
     assert isinstance(c, Context)
+    assert c.vault is None
 
 
 def test_clear(mocker, m5stickv):
     mock_modules(mocker)
-    from krux.context import Context
-    from krux.wallet import Wallet
-
+    from krux.context import Context, VaultState
     c = Context()
-    c.wallet = Wallet(None)
-
+    c.vault = VaultState(cipher="fake", manifest={"secrets": []}, version=20, iterations=100000)
     c.clear()
+    assert c.vault is None
 
-    assert c.wallet is None
 
-
-def test_is_logged_in(mocker, m5stickv):
-    from krux.key import TYPE_SINGLESIG
-
+def test_is_unlocked(mocker, m5stickv):
     mock_modules(mocker)
-    from krux.context import Context
-    from krux.wallet import Wallet
-    from krux.key import Key
-
+    from krux.context import Context, VaultState
     c = Context()
+    assert c.is_unlocked() == False
+    c.vault = VaultState(cipher=None, manifest={"secrets": []}, version=20, iterations=100000)
+    assert c.is_unlocked() == False
+    c.vault = VaultState(cipher="fake_cipher", manifest={"secrets": []}, version=20, iterations=100000)
+    assert c.is_unlocked() == True
 
-    c.wallet = Wallet(None)
+
+def test_is_logged_in_alias(mocker, m5stickv):
+    mock_modules(mocker)
+    from krux.context import Context, VaultState
+    c = Context()
     assert c.is_logged_in() == False
-
-    c.wallet = Wallet(
-        Key(mnemonic="abandon " * 11 + "about", policy_type=TYPE_SINGLESIG)
-    )
+    c.vault = VaultState(cipher="fake_cipher", manifest={"secrets": []}, version=20, iterations=100000)
     assert c.is_logged_in() == True

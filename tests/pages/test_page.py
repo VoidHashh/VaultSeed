@@ -218,7 +218,7 @@ def get_frame_titles_resulting_from_input(
             elif i == "normal key":
                 button_seq = button_seq + get_button_seq(1)
 
-    ctx = create_ctx(mocker, button_seq, None, None, touch_seq)
+    ctx = create_ctx(mocker, button_seq, touch_seq=touch_seq)
     if not has_touch:
         ctx.input.touch = None
         kboard.has_touchscreen = False

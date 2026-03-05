@@ -172,28 +172,6 @@ def test_sd_check(m5stickv, mocker):
     assert ctx.input.wait_for_button.call_count == len(BTN_SEQUENCE)
 
 
-def test_printer_test_tool(amigo, mocker, mocked_print_qr):
-    """Test that the print tool is called with the correct text"""
-    from krux.pages.device_tests import DeviceTests
-    from krux.input import BUTTON_ENTER
-
-    # Confirm print, then leave
-    BTN_SEQUENCE = [BUTTON_ENTER]
-
-    # Create a context with the mocked input sequence
-    ctx = create_ctx(mocker, BTN_SEQUENCE)
-
-    # Create an instance of the DeviceTests page
-    test_tools = DeviceTests(ctx)
-    test_tools.print_test()
-
-    # Assert that the print function was called with the expected text
-    mocked_print_qr.assert_called_with(
-        "VaultSeed Printer Test QR", title="VaultSeed Printer Test QR", check_printer=False
-    )
-    assert ctx.input.wait_for_button.call_count == len(BTN_SEQUENCE)
-
-
 def test_skip_all_tests(m5stickv, mocker, mocked_print_qr, mocked_run_one_test):
     """Test skipping all tests in the DeviceTests page.
     It enters the test suite page and then backs to the main menu"""

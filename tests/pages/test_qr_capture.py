@@ -14,22 +14,13 @@ from ..shared_mocks import (
 
 def test_capture_qr_code(mocker, multiple_devices, tdata):
     from krux.pages.qr_capture import QRCodeCapture
-    from krux.qr import FORMAT_PMOFN, FORMAT_UR
-    from ur.ur import UR
-    from urtypes.crypto.psbt import PSBT
+    from krux.qr import FORMAT_PMOFN
     from krux.wdt import wdt
 
     cases = [
         [
-            # tdata.TEST_PARTS_FORMAT_PMOFN contains tdata.TEST_DATA_B58,
-            # split in a 3 parts PMofN QR code
             tdata.TEST_PARTS_FORMAT_PMOFN,
             tdata.TEST_DATA_B58,
-        ],
-        [
-            # UR QR code
-            tdata.TEST_PARTS_FORMAT_MULTIPART_UR,
-            tdata.TEST_DATA_BYTES,
         ],
     ]
     time_mocker = TimeMocker(1000)
@@ -50,13 +41,9 @@ def test_capture_qr_code(mocker, multiple_devices, tdata):
         qr_capturer = QRCodeCapture(ctx)
 
         qr_code, qr_format = qr_capturer.qr_capture_loop()
-        if isinstance(qr_code, str):
-            assert qr_code == case[1]
-            assert qr_format == FORMAT_PMOFN
-        elif isinstance(qr_code, UR):
-            qr_data = PSBT.from_cbor(qr_code.cbor).data
-            assert qr_data == case[1]
-            assert qr_format == FORMAT_UR
+        assert isinstance(qr_code, str)
+        assert qr_code == case[1]
+        assert qr_format == FORMAT_PMOFN
 
         ctx.display.to_landscape.assert_has_calls(
             [mocker.call() for _ in range(len(case[0]))]
@@ -263,11 +250,9 @@ def test_capture_qr_code_loop_duplicated_frames(mocker, m5stickv, tdata):
 
 def test_qr_str_to_bytes(mocker, m5stickv):
     from krux.pages.qr_capture import qr_str_to_bytes
-    from ur.ur import UR
 
     # return any non-string input as is
-    for input_data in [b"already bytes", UR("a_ur_type", b"cbor bytes")]:
-        assert qr_str_to_bytes(input_data) == input_data
+    assert qr_str_to_bytes(b"already bytes") == b"already bytes"
 
     # return ascii string as a str
     input_data = "".join([chr(i) for i in range(0, 128)])

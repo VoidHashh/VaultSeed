@@ -25,7 +25,7 @@ from . import Page
 from ..display import FONT_HEIGHT, MINIMAL_PADDING, BOTTOM_LINE
 from ..buttons import PRESSED
 from ..themes import theme
-from ..qr import QRPartParser, FORMAT_UR
+from ..qr import QRPartParser
 from ..wdt import wdt
 from ..krux_settings import t
 from ..camera import QR_SCAN_MODE, ANTI_GLARE_MODE, ZOOMED_MODE
@@ -171,7 +171,7 @@ class QRCodeCapture(Page):
                 break
 
             if new_part is not None and new_part != previous_part:
-                if parser.format == FORMAT_UR:
+                if False:
                     self.update_progress_ur(parser, theme.highlight_color)
                     ur_highlighted = True
                     previous_part = None
@@ -195,7 +195,7 @@ class QRCodeCapture(Page):
                 new_part = parser.parse(data)
 
                 if (
-                    parser.format == FORMAT_UR
+                    False
                     and parser.processed_parts_count() > prev_parsed_count
                 ):
                     prev_parsed_count = parser.processed_parts_count()

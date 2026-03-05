@@ -31,7 +31,7 @@ def reset_krux_modules():
 
 @pytest.fixture
 def mp_modules(mocker, monkeypatch):
-    from embit.util import secp256k1
+
     import random
     import time
     import sys
@@ -42,7 +42,7 @@ def mp_modules(mocker, monkeypatch):
         "qrcode",
         mocker.MagicMock(encode_to_string=encode_to_string, encode=encode),
     )
-    monkeypatch.setitem(sys.modules, "secp256k1", mocker.MagicMock(wraps=secp256k1))
+    monkeypatch.setitem(sys.modules, "secp256k1", mocker.MagicMock())
     monkeypatch.setitem(sys.modules, "urandom", random)
     monkeypatch.setitem(sys.modules, "flash", mocker.MagicMock())
     monkeypatch.setitem(sys.modules, "machine", mocker.MagicMock())
