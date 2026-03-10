@@ -30,6 +30,8 @@ FROM gcc:9.5.0-bullseye AS build-base
 
 RUN apt-get update -y && \
     apt-get install --no-install-recommends -y -q \
+        ca-certificates \
+        git \
         wget \
         tar \
         zip \
@@ -58,10 +60,25 @@ RUN apt-get update -y && \
         python3-pip \
         python3-setuptools
 
-RUN mkdir -p /opt && \
-    git clone --depth 1 --recurse-submodules --shallow-submodules --branch v8.2.0-20190409 https://github.com/kendryte/kendryte-gnu-toolchain
+# GitHub occasionally resets large recursive clones over HTTP/2 in CI, so force
+# HTTP/1.1 and retry the toolchain fetch instead of failing the whole build.
+RUN git config --global http.version HTTP/1.1 && \
+    mkdir -p /opt && \
+    for attempt in 1 2 3; do \
+        rm -rf /opt/kendryte-gnu-toolchain && \
+        if git clone --depth 1 --branch v8.2.0-20190409 https://github.com/kendryte/kendryte-gnu-toolchain /opt/kendryte-gnu-toolchain && \
+           cd /opt/kendryte-gnu-toolchain && \
+           git submodule update --init --recursive --depth 1; then \
+            break; \
+        fi; \
+        if [ "$attempt" -eq 3 ]; then \
+            exit 1; \
+        fi; \
+        echo "Retrying kendryte toolchain fetch (attempt $attempt failed)..." && \
+        sleep 5; \
+    done
 
-RUN cd kendryte-gnu-toolchain && \
+RUN cd /opt/kendryte-gnu-toolchain && \
     export PATH=$PATH:/opt/kendryte-toolchain/bin && \
     ./configure --prefix=/opt/kendryte-toolchain --with-cmodel=medany --with-arch=rv64imafc --with-abi=lp64f --enable-threads=posix --enable-libatomic && \
     make -j8
