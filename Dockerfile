@@ -33,6 +33,7 @@ RUN apt-get update -y && \
         ca-certificates \
         git \
         wget \
+        xz-utils \
         tar \
         zip \
         unzip \
@@ -60,28 +61,22 @@ RUN apt-get update -y && \
         python3-pip \
         python3-setuptools
 
-# GitHub occasionally resets large recursive clones over HTTP/2 in CI, so force
-# HTTP/1.1 and retry the toolchain fetch instead of failing the whole build.
-RUN git config --global http.version HTTP/1.1 && \
+# MaixPy's own build docs and bundled Dockerfile use the prebuilt Kendryte
+# toolchain tarball. It is far more reliable in CI than compiling the
+# deprecated toolchain repository from source.
+RUN TOOLCHAIN_ARCHIVE=kendryte-toolchain-ubuntu-amd64-8.2.0-20190409.tar.xz && \
     mkdir -p /opt && \
-    for attempt in 1 2 3; do \
-        rm -rf /opt/kendryte-gnu-toolchain && \
-        if git clone --depth 1 --branch v8.2.0-20190409 https://github.com/kendryte/kendryte-gnu-toolchain /opt/kendryte-gnu-toolchain && \
-           cd /opt/kendryte-gnu-toolchain && \
-           git submodule update --init --recursive --depth 1; then \
-            break; \
+    for url in \
+        "https://github.com/kendryte/kendryte-gnu-toolchain/releases/download/v8.2.0-20190409/${TOOLCHAIN_ARCHIVE}" \
+        "http://dl.cdn.sipeed.com/${TOOLCHAIN_ARCHIVE}"; do \
+        if curl -fL --retry 5 --retry-all-errors -o "/tmp/${TOOLCHAIN_ARCHIVE}" "$url"; then \
+            tar -Jxf "/tmp/${TOOLCHAIN_ARCHIVE}" -C /opt && \
+            rm -f "/tmp/${TOOLCHAIN_ARCHIVE}" && \
+            test -x /opt/kendryte-toolchain/bin/riscv64-unknown-elf-gcc && \
+            exit 0; \
         fi; \
-        if [ "$attempt" -eq 3 ]; then \
-            exit 1; \
-        fi; \
-        echo "Retrying kendryte toolchain fetch (attempt $attempt failed)..." && \
-        sleep 5; \
-    done
-
-RUN cd /opt/kendryte-gnu-toolchain && \
-    export PATH=$PATH:/opt/kendryte-toolchain/bin && \
-    ./configure --prefix=/opt/kendryte-toolchain --with-cmodel=medany --with-arch=rv64imafc --with-abi=lp64f --enable-threads=posix --enable-libatomic && \
-    make -j8
+    done && \
+    exit 1
 
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.21.0/cmake-3.21.0.tar.gz && \
     echo "4a42d56449a51f4d3809ab4d3b61fd4a96a469e56266e896ce1009b5768bd2ab  cmake-3.21.0.tar.gz" | sha256sum -c && \
