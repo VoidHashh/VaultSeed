@@ -54,6 +54,28 @@ Use the existing build helper script:
 ./krux flash maixpy_yahboom
 ```
 
+### Build on GitHub and flash Yahboom
+
+If you want the simplest path without local Docker or WSL:
+
+1. Open `Actions -> Build Yahboom Package` in GitHub
+2. Click `Run workflow` on the branch you want to build
+3. Download the artifact `vaultseed-yahboom-package`
+4. Unzip it on Windows
+5. Install the flashing dependency:
+
+```powershell
+py -3 -m pip install -r requirements-flash.txt
+```
+
+6. Flash the board, replacing `COM6` with the detected port:
+
+```cmd
+flash-yahboom.cmd COM6
+```
+
+The downloaded package already includes `kboot.kfpkg`, `firmware.bin`, `ktool.py`, and the helper scripts. If Windows does not show a COM port for the device, install the CH340/341 driver first.
+
 ### Python tooling
 
 ```bash
