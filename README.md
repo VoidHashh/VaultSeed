@@ -76,6 +76,11 @@ flash-yahboom.cmd COM6
 
 The downloaded package already includes `kboot.kfpkg`, `firmware.bin`, `ktool.py`, and the helper scripts. If Windows does not show a COM port for the device, install the CH340/341 driver first.
 
+The `Build` workflow was also simplified:
+
+- On every `push`, it compiles only `maixpy_yahboom`
+- From GitHub `Actions -> Build -> Run workflow`, you can still build `yahboom`, any other supported device, or `all`
+
 ### Python tooling
 
 ```bash

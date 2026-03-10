@@ -6,13 +6,55 @@ on:
       - main
       - develop
       - 'release-**'
+  workflow_dispatch:
+    inputs:
+      device:
+        description: Device to build
+        required: true
+        default: maixpy_yahboom
+        type: choice
+        options:
+          - maixpy_yahboom
+          - maixpy_m5stickv
+          - maixpy_amigo
+          - maixpy_dock
+          - maixpy_cube
+          - maixpy_wonder_mv
+          - maixpy_tzt
+          - all
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        device: [maixpy_m5stickv, maixpy_amigo, maixpy_dock, maixpy_yahboom, maixpy_cube, maixpy_wonder_mv, maixpy_tzt]
+  prepare-matrix:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Select devices
+        id: set-matrix
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            device="${{ github.event.inputs.device }}"
+            if [ "$device" = "all" ]; then
+              echo 'matrix=["maixpy_yahboom","maixpy_m5stickv","maixpy_amigo","maixpy_dock","maixpy_cube","maixpy_wonder_mv","maixpy_tzt"]' >> "$GITHUB_OUTPUT"
+            else
+              echo "matrix=[\"$device\"]" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo 'matrix=["maixpy_yahboom"]' >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    needs: prepare-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        device: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
     services:
       registry:
         image: registry:2
@@ -37,181 +79,41 @@ jobs:
         uses: actions/cache@v4
         with:
           path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          key: ${{ runner.os }}-buildx-${{ matrix.device }}-${{ github.sha }}
           restore-keys: |
+            ${{ runner.os }}-buildx-${{ matrix.device }}-
             ${{ runner.os }}-buildx-
-
-      - name: Build for M5StickV
-        if: matrix.device == 'maixpy_m5stickv'
+      - name: Build firmware image
         uses: docker/build-push-action@v6
         with:
           context: .
-          build-args: DEVICE=maixpy_m5stickv
+          build-args: DEVICE=${{ matrix.device }}
           push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-m5stickv:latest
+          tags: localhost:5000/voidhashh/vaultseed-builder-${{ matrix.device }}:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - name: Extract firmware for M5StickV
-        id: extract-m5stickv
-        if: matrix.device == 'maixpy_m5stickv'
+      - name: Extract firmware
+        id: extract
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/voidhashh/vaultseed-builder-m5stickv:latest
+          image: localhost:5000/voidhashh/vaultseed-builder-${{ matrix.device }}:latest
           path: /src/firmware/Kboot/build/.
-      - name: Upload firmware for M5StickV
-        if: matrix.device == 'maixpy_m5stickv'
+      - name: Prepare artifact name
+        id: artifact
+        shell: bash
+        run: |
+          device_short="${{ matrix.device }}"
+          device_short="${device_short#maixpy_}"
+          echo "name=build-${device_short}" >> "$GITHUB_OUTPUT"
+      - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
-          path: ${{ steps.extract-m5stickv.outputs.destination }}
-          name: build-m5stickv
-
-      - name: Build for Amigo
-        if: matrix.device == 'maixpy_amigo'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          build-args: DEVICE=maixpy_amigo
-          push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-amigo:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - name: Extract firmware for Amigo
-        id: extract-amigo
-        if: matrix.device == 'maixpy_amigo'
-        uses: shrink/actions-docker-extract@v3
-        with:
-          image: localhost:5000/voidhashh/vaultseed-builder-amigo:latest
-          path: /src/firmware/Kboot/build/.
-      - name: Upload firmware for Amigo
-        if: matrix.device == 'maixpy_amigo'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.extract-amigo.outputs.destination }}
-          name: build-amigo
-
-      - name: Build for Dock
-        if: matrix.device == 'maixpy_dock'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          build-args: DEVICE=maixpy_dock
-          push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-dock:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - name: Extract firmware for Dock
-        id: extract-dock
-        if: matrix.device == 'maixpy_dock'
-        uses: shrink/actions-docker-extract@v3
-        with:
-          image: localhost:5000/voidhashh/vaultseed-builder-dock:latest
-          path: /src/firmware/Kboot/build/.
-      - name: Upload firmware for Dock
-        if: matrix.device == 'maixpy_dock'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.extract-dock.outputs.destination }}
-          name: build-dock
-
-      - name: Build for Yahboom
-        if: matrix.device == 'maixpy_yahboom'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          build-args: DEVICE=maixpy_yahboom
-          push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-yahboom:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - name: Extract firmware for Yahboom
-        id: extract-yahboom
-        if: matrix.device == 'maixpy_yahboom'
-        uses: shrink/actions-docker-extract@v3
-        with:
-          image: localhost:5000/voidhashh/vaultseed-builder-yahboom:latest
-          path: /src/firmware/Kboot/build/.
-      - name: Upload firmware for Yahboom
-        if: matrix.device == 'maixpy_yahboom'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.extract-yahboom.outputs.destination }}
-          name: build-yahboom
-
-      - name: Build for Cube
-        if: matrix.device == 'maixpy_cube'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          build-args: DEVICE=maixpy_cube
-          push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-cube:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - name: Extract firmware for Cube
-        id: extract-cube
-        if: matrix.device == 'maixpy_cube'
-        uses: shrink/actions-docker-extract@v3
-        with:
-          image: localhost:5000/voidhashh/vaultseed-builder-cube:latest
-          path: /src/firmware/Kboot/build/.
-      - name: Upload firmware for Cube
-        if: matrix.device == 'maixpy_cube'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.extract-cube.outputs.destination }}
-          name: build-cube
-
-      - name: Build for WonderMV
-        if: matrix.device == 'maixpy_wonder_mv'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          build-args: DEVICE=maixpy_wonder_mv
-          push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-wonder-mv:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - name: Extract firmware for WonderMV
-        id: extract-wonder-mv
-        if: matrix.device == 'maixpy_wonder_mv'
-        uses: shrink/actions-docker-extract@v3
-        with:
-          image: localhost:5000/voidhashh/vaultseed-builder-wonder-mv:latest
-          path: /src/firmware/Kboot/build/.
-      - name: Upload firmware for WonderMV
-        if: matrix.device == 'maixpy_wonder_mv'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.extract-wonder-mv.outputs.destination }}
-          name: build-wonder-mv
-
-      - name: Build for TZT
-        if: matrix.device == 'maixpy_tzt'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          build-args: DEVICE=maixpy_tzt
-          push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-tzt:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-      - name: Extract firmware for TZT
-        id: extract-tzt
-        if: matrix.device == 'maixpy_tzt'
-        uses: shrink/actions-docker-extract@v3
-        with:
-          image: localhost:5000/voidhashh/vaultseed-builder-tzt:latest
-          path: /src/firmware/Kboot/build/.
-      - name: Upload firmware for TZT
-        if: matrix.device == 'maixpy_tzt'
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ steps.extract-tzt.outputs.destination }}
-          name: build-tzt
-
+          path: ${{ steps.extract.outputs.destination }}
+          name: ${{ steps.artifact.outputs.name }}
       - name: Move cache
+        if: always()
         run: |
           rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-
-
+          if [ -d /tmp/.buildx-cache-new ]; then
+            mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          fi
