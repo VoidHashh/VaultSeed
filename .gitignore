@@ -25,6 +25,11 @@
 ######################
 build/
 build-*/
+!firmware/Kboot/build/
+!firmware/Kboot/build/BUILD.sh
+!firmware/Kboot/build/CLEAN.sh
+!firmware/Kboot/build/config.bin
+!firmware/Kboot/build/ktool.py
 
 # Test failure outputs
 ######################
@@ -58,6 +63,7 @@ in.txt
 out.txt
 sitemap.xml.gz
 *.bin
+!firmware/Kboot/build/config.bin
 *.bin.sig
 *.bin.sha256.txt
 *.kfpkg
