@@ -1,21 +1,23 @@
 name: Docs
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
 
 jobs:
   build-gh-pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
+      - uses: actions/checkout@v5
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
