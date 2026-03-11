@@ -1846,6 +1846,7 @@ def test_grind_alternate_decryption_key(m5stickv):
     correct key (if strong), can be found soon-ish, resulting in "garbage"
     bytes which are not the original secret.
     """
+    pytest.importorskip("embit.bip32")
     from datetime import datetime, timedelta
     from embit import bip39, bip32
     from krux import kef

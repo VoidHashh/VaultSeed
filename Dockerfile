@@ -85,7 +85,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.21.0/cmake-3.21.0
 
 RUN apt-get update && apt-get install python3-venv -y
 RUN python3 -m venv /kruxenv
-RUN /kruxenv/bin/pip install astor
+RUN /kruxenv/bin/pip install astor wheel
 RUN /kruxenv/bin/pip install pyserial==3.4
 
 
@@ -104,7 +104,7 @@ WORKDIR /src
 COPY ./vendor vendor
 
 # install vendor/embit
-RUN /kruxenv/bin/pip install vendor/embit
+RUN /kruxenv/bin/pip install --no-build-isolation --no-deps vendor/embit
 # clean vendor/embit
 RUN rm -rf vendor/embit/src/embit/util/prebuilt && \
     rm -rf vendor/embit/src/embit/liquid && \
