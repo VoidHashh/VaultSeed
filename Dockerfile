@@ -161,4 +161,6 @@ FROM build-firmware AS build
 ARG DEVICE="maixpy_m5stickv"
 WORKDIR /src/firmware/Kboot/build
 RUN cp /src/firmware/MaixPy/projects/"${DEVICE}"/build/firmware.bin .
+# Normalize shell line endings to avoid sporadic CRLF-related failures in CI.
+RUN find /src/firmware/Kboot -type f -name '*.sh' -exec sed -i -e 's/\r$//' {} +
 RUN /bin/bash ../package.sh
