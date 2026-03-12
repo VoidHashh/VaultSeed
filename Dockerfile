@@ -161,8 +161,4 @@ FROM build-firmware AS build
 ARG DEVICE="maixpy_m5stickv"
 WORKDIR /src/firmware/Kboot/build
 RUN cp /src/firmware/MaixPy/projects/"${DEVICE}"/build/firmware.bin .
-
-# Normalize line endings on shell scripts without failing if the glob is empty.
-RUN find . -maxdepth 1 -type f -name '*.sh' -exec sed -i -e 's/\r$//' {} +
-
-RUN /bin/bash CLEAN.sh && /bin/bash BUILD.sh
+RUN /bin/bash ../package.sh
