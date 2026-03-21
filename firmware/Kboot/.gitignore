@@ -10,6 +10,10 @@
 *.kfpkg
 firmware.bin
 bootloader*
+!src/bootloader_lo/
+!src/bootloader_lo/**
+!src/bootloader_hi/
+!src/bootloader_hi/**
 
 # Packages
 ############
