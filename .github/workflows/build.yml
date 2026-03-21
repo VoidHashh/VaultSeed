@@ -55,11 +55,6 @@ jobs:
       fail-fast: false
       matrix:
         device: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
-    services:
-      registry:
-        image: registry:2
-        ports:
-          - 5000:5000
     steps:
       - name: Remove unnecessary files
         run: |
@@ -71,8 +66,6 @@ jobs:
         uses: actions/checkout@v5
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        with:
-          driver-opts: network=host
       - name: Cache Docker layers
         uses: actions/cache@v4
         with:
@@ -86,15 +79,17 @@ jobs:
         with:
           context: .
           build-args: DEVICE=${{ matrix.device }}
-          push: true
-          tags: localhost:5000/voidhashh/vaultseed-builder-${{ matrix.device }}:latest
+          load: true
+          provenance: false
+          sbom: false
+          tags: voidhashh/vaultseed-builder-${{ matrix.device }}:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       - name: Extract firmware
         id: extract
         uses: shrink/actions-docker-extract@v3
         with:
-          image: localhost:5000/voidhashh/vaultseed-builder-${{ matrix.device }}:latest
+          image: voidhashh/vaultseed-builder-${{ matrix.device }}:latest
           path: /src/firmware/Kboot/build/.
       - name: Prepare artifact name
         id: artifact
